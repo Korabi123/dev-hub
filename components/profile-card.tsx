@@ -1,4 +1,4 @@
-import { auth, clerkClient, useUser } from "@clerk/nextjs";
+// import { auth, clerkClient, useUser } from "@clerk/nextjs";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -18,12 +18,12 @@ import prismadb from "@/lib/prismadb";
 import { PostCard } from "./post-card";
 
 const ProfileCard = async () => {
-  const { userId } = auth();
-  const user = await clerkClient.users.getUser(userId as string);
+  // const { userId } = auth();
+  // const user = await clerkClient.users.getUser(userId as string);
 
   const latestPostsByUser = await prismadb.post.findMany({
     where: {
-      userId: user.id,
+      // userId: user.id,
     },
     orderBy: {
       createdAt: "desc",
@@ -38,15 +38,15 @@ const ProfileCard = async () => {
             <div className="flex w-full justify-between">
               <Avatar className="lg:h-40 lg:w-40 h-20 w-20">
                 <AvatarImage
-                  src={user.imageUrl}
-                  alt={`${user.username}'s profile image`}
+                  // src={user.imageUrl}
+                  // alt={`${user.username}'s profile image`}
                 />
                 <AvatarFallback>
                   <Skeleton className="lg:h-40 lg:w-40 w-20 h-20 rounded-full" />
                 </AvatarFallback>
               </Avatar>
               <div>
-                {user?.firstName && (
+                {/* {user?.firstName && (
                   <p className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
                     {user?.firstName + " " + user?.lastName}
                   </p>
@@ -54,7 +54,7 @@ const ProfileCard = async () => {
                 {!user?.firstName && null}
                 <p className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0 text-zinc-400">
                   @{user.username}
-                </p>
+                </p> */}
                 <Link href="/profile/edit">
                   <Button variant={"outline"} className="mt-4">
                     <Edit size={15} />{" "}
@@ -82,14 +82,14 @@ const ProfileCard = async () => {
             )}
           </div>
           <div className="grid lg:grid-cols-2 md:grid-cols-1 place-items-center justify-center">
-            {latestPostsByUser.map((post) => (
+            {/* {latestPostsByUser.map((post) => (
               <PostCard
                 className="mb-4"
                 key={post.id}
                 data={post}
                 username={user.username as string}
-              />
-            ))}
+              /> */}
+            {/* ))} */}
           </div>
         </CardContent>
       </Card>

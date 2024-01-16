@@ -1,6 +1,5 @@
 "use client";
 
-import { useUser } from "@clerk/nextjs";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -44,29 +43,29 @@ const ProfilePage = () => {
   
   const router = useRouter();
   
-  const { isLoaded, isSignedIn, user } = useUser();
+  // const { isLoaded, isSignedIn, user } = useUser();
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: `${user?.username}`,
-      bio: `${user?.unsafeMetadata.bio ? user?.unsafeMetadata.bio : ""}`
+      // username: `${user?.username}`,
+      // bio: `${user?.unsafeMetadata.bio ? user?.unsafeMetadata.bio : ""}`
     },
   });
 
-  if (!isLoaded || !isSignedIn) {
-    return null;
-  }
+  // if (!isLoaded || !isSignedIn) {
+  //   return null;
+  // }
 
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     try {
-      user.update({
-        username: values.username,
-        unsafeMetadata: {
-          bio: values.bio
-        }
-      });
+      // user.update({
+      //   username: values.username,
+      //   unsafeMetadata: {
+      //     bio: values.bio
+      //   }
+      // });
 
       router.push("/profile");
       router.refresh();
@@ -85,7 +84,7 @@ const ProfilePage = () => {
               Edit Profile
             </CardTitle>
             <CardDescription>
-              Profile settings for {user.fullName}
+              {/* Profile settings for {user.fullName} */}
             </CardDescription>
           </CardHeader>
           <CardContent>

@@ -4,10 +4,9 @@ import { TextTypingEffect } from "@/components/text-typewriter";
 import { ButtonFlickeringLight } from "@/components/special-button";
 import { ChevronsLeftRight, Globe } from "lucide-react";
 import { CardSpotlight } from "@/components/card-spotlight";
-import { auth } from "@clerk/nextjs";
 
 export default function Home() {
-  const { userId } = auth();
+  // const { userId } = auth();
 
   const priorities = [
     {
@@ -46,7 +45,7 @@ export default function Home() {
               <TextTypingEffect />
             </p>
             <div className="mt-10">
-              <ButtonFlickeringLight userId={userId!} />
+              <ButtonFlickeringLight userId={""} />
             </div>
           </div>
         </section>

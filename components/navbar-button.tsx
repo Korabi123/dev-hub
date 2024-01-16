@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import { useRouter } from "next/navigation";
-import { useAuth } from "@clerk/nextjs";
+// import { useAuth } from "@clerk/nextjs";
 
 export const NavButton = () => {
   const divRef = useRef<HTMLButtonElement>(null);
@@ -11,7 +11,7 @@ export const NavButton = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [opacity, setOpacity] = useState(0);
   
-  const { isSignedIn } = useAuth();
+  // const { isSignedIn } = useAuth();
 
   const router = useRouter();
 
@@ -48,9 +48,9 @@ export const NavButton = () => {
   };
 
   const handleClick = () => {
-    if (!isSignedIn) {
-      router.push(process.env.NEXT_PUBLIC_CLERK_SIGN_IN_URL!)
-    }
+    // if (!isSignedIn) {
+    //   router.push(process.env.NEXT_PUBLIC_CLERK_SIGN_IN_URL!)
+    // }
     router.push('/feed');
   }
 
@@ -73,7 +73,7 @@ export const NavButton = () => {
           background: `radial-gradient(120px circle at ${position.x}px ${position.y}px, rgba(199, 210, 254,1), transparent 40%)`,
         }}
       />
-      {isSignedIn ? "Feed" : "Log In"}
+      {/* {isSignedIn ? "Feed" : "Log In"} */}
     </button>
   );
 };

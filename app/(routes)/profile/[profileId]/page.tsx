@@ -1,19 +1,17 @@
-import { clerkClient } from "@clerk/nextjs";
+
 import ProfileCard from "./components/profile-card";
 
 import Image from "next/image";
 
 const ProfilePage = async ({ params }: { params: { profileId: string } }) => {
   try {
-    const user = await clerkClient.users.getUser(params.profileId);
-
-    if (user) {
-      return (
-        <div>
-          <ProfileCard profileId={params.profileId} user={user} />
-        </div>
-      );
-    }
+    // if (user) {
+    //   return (
+    //     <div>
+    //       <ProfileCard profileId={params.profileId} user={user} />
+    //     </div>
+    //   );
+    // }
   } catch (error: any) {
     return (
       <div className="flex pt-28 sm:ml-72 justify-center">

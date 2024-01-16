@@ -1,6 +1,5 @@
 import { PostCard } from "./components/post-card";
 import prismadb from "@/lib/prismadb";
-import { auth, clerkClient } from "@clerk/nextjs";
 import Image from "next/image";
 
 const PostPage = async ({ params }: { params: { postId: string } }) => {
@@ -10,16 +9,14 @@ const PostPage = async ({ params }: { params: { postId: string } }) => {
     },
   });
 
-  const { userId } = auth();
-  const logedInUser = await clerkClient.users.getUser(userId!);
+  
 
   if (postById) {
     const userById = postById?.userId;
-    const user = await clerkClient.users.getUser(userById as string);
 
     return (
       <div className="sm:ml-72">
-        <PostCard data={postById} authorImage={user.imageUrl} username={user.username as string} logedInId={logedInUser.id} />
+        <PostCard data={postById} authorImage={""} username={""} logedInId={""} />
       </div>
     );
   } else {

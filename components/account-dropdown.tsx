@@ -28,11 +28,11 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 
-import { useClerk } from "@clerk/nextjs";
+
 import { useRouter } from "next/navigation";
+import { LogoutButton } from "./auth/logout-button";
 
 export function AccountDropdown() {
-  const { signOut } = useClerk();
   const router = useRouter();
 
   return (
@@ -108,16 +108,13 @@ export function AccountDropdown() {
           </DropdownMenuItem>
         </a>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="cursor-pointer">
-          <button
-            className="py-0 px-0 flex items-center w-full"
-            onClick={() => signOut(() => router.push("/"))}
-          >
+        <LogoutButton>
+          <DropdownMenuItem>
             <LogOut className="mr-2 h-4 w-4" />
             <span>Log out</span>
             <DropdownMenuShortcut>⌘⇧Q</DropdownMenuShortcut>
-          </button>
-        </DropdownMenuItem>
+          </DropdownMenuItem>
+        </LogoutButton>
       </DropdownMenuContent>
     </DropdownMenu>
   );
