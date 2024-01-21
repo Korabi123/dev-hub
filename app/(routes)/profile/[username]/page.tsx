@@ -1,17 +1,19 @@
-
+import { getUserByUsername } from "@/data/user";
 import ProfileCard from "./components/profile-card";
 
 import Image from "next/image";
 
-const ProfilePage = async ({ params }: { params: { profileId: string } }) => {
+const ProfilePage = async ({ params }: { params: { username: string } }) => {
   try {
-    // if (user) {
-    //   return (
-    //     <div>
-    //       <ProfileCard profileId={params.profileId} user={user} />
-    //     </div>
-    //   );
-    // }
+    const user = await getUserByUsername(params.username);
+
+    if (user) {
+      return (
+        <div className="h-full sm:ml-72">
+          <ProfileCard profileId={user.id} user={user} />
+        </div>
+      );
+    }
   } catch (error: any) {
     return (
       <div className="flex pt-28 sm:ml-72 justify-center">

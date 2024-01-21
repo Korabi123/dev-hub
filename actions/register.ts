@@ -7,7 +7,7 @@ import * as z from "zod";
 
 import { generateVerificationToken } from "@/lib/tokens";
 import { RegisterSchema } from "@/schemas";
-import { getUserByEmail } from "@/data/user";
+import { getUserByEmail, getUserByUsername } from "@/data/user";
 import { sendVerificationEmail } from "@/lib/mail";
 
 export const register = async (values: z.infer<typeof RegisterSchema>) => {
@@ -17,7 +17,7 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
     return { error: "Invalid fields!" }
   }
 
-  const { email, password, name } = validatedFields.data;
+  const { email, password, name, username } = validatedFields.data;
   const hashedPassword = await bcrypt.hash(password, 10);
 
   const existingUser = await getUserByEmail(email);
@@ -26,11 +26,18 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
     return { error: "Email is already taken" };
   }
 
+  const existingUsername = await getUserByUsername(username);
+
+  if (existingUsername) {
+    return { error: "Username is already taken" }; 
+  }
+
   await prismadb.user.create({
     data: {
       name,
       email,
       password: hashedPassword,
+      username,
     }
   });
 

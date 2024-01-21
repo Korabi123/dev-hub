@@ -111,6 +111,7 @@ const PostForm = () => {
                         disabled={isLoading}
                         placeholder="Forms are an integral part of web development, allowing users to interact with and submit data to a website. Next.js, a popular React framework, provides a seamless way to handle forms while leveraging its server-side rendering capabilities."
                         {...field}
+                        rows={20}
                       />
                     </FormControl>
                     <FormDescription>

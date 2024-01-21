@@ -18,7 +18,6 @@ import React, { useState } from "react";
 interface Props {
   data: {
     title: string;
-    content: string;
     id: string;
     imageUrl: string;
   }
@@ -29,7 +28,7 @@ const ShareDialog: React.FC<Props> = ({ data }) => {
 
   return (
     <Dialog>
-      <DialogTrigger>
+      <DialogTrigger asChild>
         <Button className="w-full">Share</Button>
       </DialogTrigger>
       <DialogContent>

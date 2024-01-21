@@ -18,7 +18,6 @@ import React, { useState } from "react";
 interface Props {
   data: {
     title: string;
-    content: string;
     id: string;
     imageUrl: string;
   };

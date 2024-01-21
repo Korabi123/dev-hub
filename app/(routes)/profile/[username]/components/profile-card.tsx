@@ -1,30 +1,26 @@
-// import { auth, clerkClient, useUser } from "@clerk/nextjs";
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-
-import { Edit } from "lucide-react";
-import Link from "next/link";
 import prismadb from "@/lib/prismadb";
-import { PostCard } from "./post-card";
+import { PostCard } from "@/components/post-card";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Edit } from "lucide-react";
+import { CgProfile } from "react-icons/cg";
+import { User } from "@prisma/client";
 import { FaUser } from "react-icons/fa";
 import { currentUser } from "@/lib/auth";
-import { CgProfile } from "react-icons/cg";
 
-const ProfileCard = async () => {
-  const user = await currentUser();
+interface ProfileCardProps {
+  profileId: string;
+  user: User;
+}
 
+const ProfileCard: React.FC<ProfileCardProps> = async ({ profileId, user }) => {
+  const logedInUser = await currentUser();
   const latestPostsByUser = await prismadb.post.findMany({
     where: {
-      userId: user?.id,
+      userId: profileId,
     },
     orderBy: {
       createdAt: "desc",
@@ -39,7 +35,7 @@ const ProfileCard = async () => {
             <div className="flex w-full justify-between">
               <Avatar className="lg:h-40 lg:w-40 h-20 w-20">
                 <AvatarImage
-                  src={user?.image}
+                  src={user?.image!}
                   alt={`${user?.username}'s profile image`}
                 />
                 <AvatarFallback className="bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 text-white">
@@ -61,20 +57,22 @@ const ProfileCard = async () => {
                     )}
                   </div>
                 </div>
-                <div className="grid grid-cols-2 gap-2">
-                  <Link href="/profile/edit">
-                    <Button variant={"outline"} className="mt-4 w-full">
-                      <Edit size={15} />{" "}
-                      <span className="ml-2">Edit Profile</span>
-                    </Button>
-                  </Link>
-                  <Link href="/profile/edit/picture">
-                    <Button variant={"outline"} className="mt-4 w-full">
-                      <CgProfile size={15} />{" "}
-                      <span className="ml-2">Change Picture</span>
-                    </Button>
-                  </Link>
-                </div>
+                {logedInUser?.id === user.id ? (
+                  <div className="grid grid-cols-2 gap-2">
+                    <Link href="/profile/edit">
+                      <Button variant={"outline"} className="mt-4 w-full">
+                        <Edit size={15} />{" "}
+                        <span className="ml-2">Edit Profile</span>
+                      </Button>
+                    </Link>
+                    <Link href="/profile/edit/picture">
+                      <Button variant={"outline"} className="mt-4 w-full">
+                        <CgProfile size={15} />{" "}
+                        <span className="ml-2">Change Picture</span>
+                      </Button>
+                    </Link>
+                  </div>
+                ) : null}
               </div>
             </div>
             <div className="md:hidden block">
@@ -89,19 +87,22 @@ const ProfileCard = async () => {
                     @{user?.username}
                   </p>
                 )}
-                <div className="grid grid-cols-2 gap-2 md:hidden">
-                  <Link href="/profile/edit">
-                    <Button variant={"outline"} className="mt-4 w-full">
-                      <Edit size={15} /> <span className="ml-2">Edit Profile</span>
-                    </Button>
-                  </Link>
-                  <Link href="/profile/edit/picture">
-                    <Button variant={"outline"} className="mt-4 w-full">
-                      <CgProfile size={15} />{" "}
-                      <span className="ml-2">Change Picture</span>
-                    </Button>
-                  </Link>
-                </div>
+                {logedInUser?.id === user.id ? (
+                  <div className="grid grid-cols-2 gap-2 md:hidden">
+                    <Link href="/profile/edit">
+                      <Button variant={"outline"} className="mt-4 w-full">
+                        <Edit size={15} />{" "}
+                        <span className="ml-2">Edit Profile</span>
+                      </Button>
+                    </Link>
+                    <Link href="/profile/edit/picture">
+                      <Button variant={"outline"} className="mt-4 w-full">
+                        <CgProfile size={15} />{" "}
+                        <span className="ml-2">Change Picture</span>
+                      </Button>
+                    </Link>
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>

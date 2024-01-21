@@ -1,11 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import { Edit } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { FaUser } from "react-icons/fa";
 
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -13,20 +15,17 @@ import {
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
-import { useEffect, useState } from "react";
-import { Edit } from "lucide-react";
-import Link from "next/link";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { useRouter } from "next/navigation";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import ShareDrawer from "@/components/share-drawer";
 import ShareDialog from "@/components/share-dialog";
 import useMediaQuery from "@/hooks/useMediaQuery";
+import { HoverCard, HoverCardTrigger, HoverCardContent } from "@/components/ui/hover-card";
+import { User } from "@prisma/client";
 
 interface PostCardProps {
   className?: string;
   data: {
     title: string;
-    content: string;
     id: string;
     userId: string;
     imageUrl: string;
@@ -35,6 +34,8 @@ interface PostCardProps {
   username: string;
   onClick?: () => void;
   logedInId: string;
+  user: User;
+  children: React.ReactNode;
 }
 
 export const PostCard: React.FC<PostCardProps> = ({
@@ -44,18 +45,12 @@ export const PostCard: React.FC<PostCardProps> = ({
   onClick,
   authorImage,
   logedInId,
+  user,
+  children,
 }) => {
-  const [isMounted, setIsMounted] = useState(false);
-
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   const router = useRouter();
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) return null;
 
   return (
     <div className="flex py-20 items-center justify-center">
@@ -64,30 +59,47 @@ export const PostCard: React.FC<PostCardProps> = ({
         className={cn("lg:w-[650px] sm:w-[500px] w-full select-none", className)}
       >
         <CardHeader>
-          <CardTitle className="font-bold tracking-tight">
+          <CardTitle className="text-4xl tracking-tight">
             {data.title}
           </CardTitle>
-          <div className="flex items-center space-x-2">
-            <CardDescription>
-              <div className="mt-4 flex items-center gap-x-2">
-                <Avatar>
-                  <AvatarImage src={authorImage} />
-                </Avatar>
-                @{username}
-                <Link href={`/profile/${data.userId}`} className="ml-4">
-                  <p className="hover:underline text-zinc-400 transition">
-                    View Profile
-                  </p>
-                </Link>
+          <div className="flex items-center">
+            <div className="text-muted-foreground text-sm">
+              <div className="flex items-center space-x-2">
+                <p className="ml-2">by</p>
+                <div>
+                  <HoverCard>
+                    <HoverCardTrigger asChild>
+                      <Button className="px-0" onClick={() => router.push(`/profile/${username}`)} variant={"link"}>@{username}</Button>
+                    </HoverCardTrigger>
+                    <HoverCardContent>
+                      <div className="flex justify-between space-x-4">
+                        <Avatar>
+                          <AvatarImage src={`${authorImage}`} />
+                          <AvatarFallback className="bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 text-white">
+                            <FaUser />
+                          </AvatarFallback>
+                        </Avatar>
+                        <div className="space-y-1">
+                          <h4 className="text-sm font-semibold">
+                            @{username}
+                          </h4>
+                          <div className="w-1/3 text-wrap">
+                            <p className="text-xs select-none truncate">
+                              {user.bio}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </HoverCardContent>
+                  </HoverCard>
+                </div>
               </div>
               {logedInId === data.userId ? <Button variant='outline' className="mt-4 items-center" onClick={() => router.push(`/feed/${data.id}/edit`)}><Edit className="h-4 w-4" /> <span className="ml-2">Edit Post</span></Button> : null}
-            </CardDescription>
+            </div>
           </div>
         </CardHeader>
         <CardContent>
-          <p className="leading-7 [&:not(:first-child)]:mt-6 text-lg">
-            {data.content}
-          </p>
+          {children}
           <div className="mt-4 relative aspect-video rounded-lg overflow-hidden bg-cover">
             <Image
               src={data.imageUrl}

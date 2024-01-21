@@ -4,9 +4,10 @@ import { TextTypingEffect } from "@/components/text-typewriter";
 import { ButtonFlickeringLight } from "@/components/special-button";
 import { ChevronsLeftRight, Globe } from "lucide-react";
 import { CardSpotlight } from "@/components/card-spotlight";
+import { currentUser } from "@/lib/auth";
 
-export default function Home() {
-  // const { userId } = auth();
+export default async function Home() {
+  const user = await currentUser();
 
   const priorities = [
     {
@@ -45,7 +46,7 @@ export default function Home() {
               <TextTypingEffect />
             </p>
             <div className="mt-10">
-              <ButtonFlickeringLight userId={""} />
+              <ButtonFlickeringLight mode={!user ? "register" : "feed"} />
             </div>
           </div>
         </section>

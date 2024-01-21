@@ -106,7 +106,39 @@ export const RegisterSchema = z.object({
           "Password must contain one uppercase letter, one lowercase letter, one number and one of the following characters: * . ! @ $ % &",
       }
     ),
-  name: z.string().min(1, {
+  name: z.string().min(3, {
     message: "Name is required",
   }),
+  username: z.string().min(1, {
+    message: "Username is required",
+  }).max(8, {
+    message: "Username cannot be longer than 8 characters",
+  }).regex(
+    new RegExp("^[A-Za-z][A-Za-z0-9_]{3,8}$"),
+    {
+      message: "Username must start with a letter and can only contain letters, numbers and underscores",
+    }
+  )
 });
+
+
+export const ProfileEditSchema = z.object({
+  name: z.optional(z.string().max(11, {
+    message: "Name cannot be longer than 11 characters",
+  })),
+  username: z.optional(z.string().max(8, {
+    message: "Username cannot be longer than 8 characters",
+  }).regex(
+    new RegExp("^[A-Za-z][A-Za-z0-9_]{3,8}$"),
+    {
+      message: "Username must start with a letter and can only contain letters, numbers and underscores",
+    },
+  )),
+  bio: z.optional(z.string().max(200, {
+    message: "Bio cannot be longer than 200 characters",
+  })),
+})
+
+export const PictureEditSchema = z.object({
+  image: z.optional(z.string().url()),
+})

@@ -1,8 +1,11 @@
 import Link from "next/link";
 
 import { NavButton } from "./navbar-button";
+import { currentUser } from "@/lib/auth";
 
 const Navbar = async () => {
+  const user = await currentUser();
+
   return (
     <header className="fixed inset-x-0 top-0 z-30 w-full bg-transparent backdrop-blur-md">
       <div className="py-4 flex xl:px-96 lg:px-60 md:px-36 px-4 justify-between">
@@ -12,7 +15,7 @@ const Navbar = async () => {
           </Link>
         </div>
         <div>
-          <NavButton />
+          <NavButton mode={user ? "feed" : "login"} />
         </div>
       </div>
     </header>

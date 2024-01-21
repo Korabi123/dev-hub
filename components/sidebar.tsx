@@ -7,12 +7,14 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
 
-import { Settings, BookMarked, PlusIcon } from "lucide-react";
+import { Settings, BookMarked, PlusIcon, MenuIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { AccountDropdown } from "./account-dropdown";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Separator } from "./ui/separator";
+import { useCurrentUser } from "@/hooks/use-current-user";
+import { FaUser } from "react-icons/fa";
 
 const routes = [
   {
@@ -27,10 +29,8 @@ const routes = [
   },
 ];
 
-export const revalidate = 0;
-
 const Sidebar = () => {
-  // const { user } = useUser();
+  const user = useCurrentUser()
   const pathname = usePathname();
 
   const [isMounted, setIsMounted] = useState(false);
@@ -43,9 +43,9 @@ const Sidebar = () => {
     return null;
   }
 
-  // if (!user) {
-  //   return null;
-  // }
+  if (!user) {
+    return null;
+  }
 
   return (
     <>
@@ -56,7 +56,7 @@ const Sidebar = () => {
           <Sheet>
             <SheetTrigger>
               <Button className="items-center" variant="outline" size="icon">
-                {/* <MenuIcon /> */}
+                <MenuIcon />
               </Button>
             </SheetTrigger>
 
@@ -72,19 +72,19 @@ const Sidebar = () => {
                   <div className="flex w-full justify-between space-x-4 items-center select-none">
                     <Avatar>
                       <AvatarImage
-                        // src={user.imageUrl}
-                        // alt={`${user.username}'s profile image`}
+                        src={user.image}
+                        alt={`${user.username}'s profile image`}
                       />
-                      <AvatarFallback>
-                        <Skeleton className="w-[100px] h-[20px] rounded-full" />
+                      <AvatarFallback className="bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 text-white">
+                        <FaUser />
                       </AvatarFallback>
                     </Avatar>
                     <AccountDropdown />
                   </div>
                   <div className="leading-3 select-none">
-                    {/* <p className="text-md md:text-lg">{user.fullName}</p> */}
+                    <p className="text-md md:text-lg">{user.name}</p>
                     <p className="text-sm md:text-md text-zinc-400">
-                      {/* @{user.username} */}
+                      @{user.username}
                     </p>
                   </div>
 
@@ -141,19 +141,19 @@ const Sidebar = () => {
             <div className="flex w-full justify-between space-x-4 items-center select-none">
               <Avatar>
                 <AvatarImage
-                  // src={user.imageUrl}
-                  // alt={`${user.username}'s profile image`}
+                  src={user.image}
+                  alt={`${user.username}'s profile image`}
                 />
-                <AvatarFallback>
-                  <Skeleton className="w-[100px] h-[20px] rounded-full" />
+                <AvatarFallback className="bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 text-white">
+                  <FaUser />
                 </AvatarFallback>
               </Avatar>
               <AccountDropdown />
             </div>
             <div className="leading-3 select-none">
-              {/* <p className="text-md md:text-lg">{user.fullName}</p> */}
+              <p className="text-md md:text-lg">{user.name}</p>
               <p className="text-sm md:text-md text-zinc-400">
-                {/* @{user.username} */}
+                @{user.username}
               </p>
             </div>
 

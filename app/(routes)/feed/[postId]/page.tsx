@@ -1,22 +1,32 @@
+import { getUserById } from "@/data/user";
 import { PostCard } from "./components/post-card";
-import prismadb from "@/lib/prismadb";
 import Image from "next/image";
+import { currentUser } from "@/lib/auth";
+
+import { MarkdownRenderer } from "@/components/markdown-renderer";
+import { getPostById } from "@/data/get-post-by-id";
 
 const PostPage = async ({ params }: { params: { postId: string } }) => {
-  const postById = await prismadb.post.findUnique({
-    where: {
-      id: params.postId,
-    },
-  });
+  const postById = await getPostById(params.postId);
 
-  
+  const user = await currentUser();
 
-  if (postById) {
-    const userById = postById?.userId;
+  if (postById.success) {
+    const userById = await getUserById(postById.success?.userId);
+
+    const content = postById.success.content;
 
     return (
       <div className="sm:ml-72">
-        <PostCard data={postById} authorImage={""} username={""} logedInId={""} />
+        <PostCard
+          user={userById!}
+          data={postById.success}
+          authorImage={userById?.image!}
+          username={userById?.username!}
+          logedInId={user?.id!}
+        >
+          <MarkdownRenderer content={content} />
+        </PostCard>
       </div>
     );
   } else {
