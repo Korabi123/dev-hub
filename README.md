@@ -19,22 +19,22 @@ Once finished this Project will have the following Key Features:
 
 ## For the env file use this template:
 ```env
-DATABASE_URL=""
-DIRECT_URL=""
+DATABASE_URL=
+DIRECT_URL=
 
 # NextAuth
-AUTH_SECRET=""
+AUTH_SECRET=
 GITHUB_CLIENT_ID=
 GITHUB_CLIENT_SECRET=
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
 
 # Next Cloudinary
-NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=""
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=
 
 # Nodemailer
 GMAIL_EMAIL=
 GMAIL_PASSWORD=
 
-NEXT_PUBLIC_APP_URL=""
+NEXT_PUBLIC_APP_URL=
 ```
