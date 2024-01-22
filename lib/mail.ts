@@ -1,38 +1,38 @@
-import PasswordResetEmail from "@/emails/password-reset";
-import TwoFactorEmail from "@/emails/two-factor";
-import VerificationEmail from "@/emails/verification";
-import { Resend } from "resend";
+import { transporter } from "./nodemailer";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const domain = process.env.NEXT_PUBLIC_APP_URL;
 
-export const sendVerificationEmail = async (email: string, token: string, name: string) => {
+export const sendVerificationEmail = async (
+  email: string,
+  token: string,
+  name: string
+) => {
   const confirmLink = `${domain}/auth/new-verification?token=${token}`;
 
-  await resend.emails.send({
-    from: "onboarding@resend.dev",
+  await transporter.sendMail({
+    from: process.env.GMAIL_EMAIL,
     to: email,
     subject: "[DevHub]: Please verify your email.",
-    react: VerificationEmail({ confirmLink: confirmLink, name: name })
-  })
-}
+    html: `<html dir="ltr" lang="en"><head><link rel="preload" as="image" href="https://korabi-ecommerce-admin.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdncmjp41z%2Fimage%2Fupload%2Fv1704195773%2Fskhemiousn5nzs3vib1d.png&amp;w=1920&amp;q=75" /><link rel="preload" as="image" href="https://korabi-ecommerce-admin.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdncmjp41z%2Fimage%2Fupload%2Fv1704195824%2Fpcgb9zsaecqlryiuwifi.png&amp;w=1920&amp;q=75" /><meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /></head><body style="background-color:#fff;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Oxygen-Sans,Ubuntu,Cantarell,&quot;Helvetica Neue&quot;,sans-serif"><table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="max-width:37.5em"><tbody><tr style="width:100%"><td><table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="border:1px solid rgb(0,0,0, 0.1);border-radius:3px;overflow:hidden"><tbody><tr><td><img src="https://korabi-ecommerce-admin.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdncmjp41z%2Fimage%2Fupload%2Fv1704195773%2Fskhemiousn5nzs3vib1d.png&amp;w=1920&amp;q=75" style="display:block;outline:none;border:none;text-decoration:none" width="620" /><table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding:20px 40px;padding-bottom:0"><tbody style="width:100%"><tr style="width:100%"><td data-id="__react-email-column"><h1 style="font-size:32px;font-weight:bold;text-align:center">Hi ${name},</h1><h2 style="font-size:26px;font-weight:bold;text-align:start">We noticed a recent attempt to Register for a DevHub account with your email.</h2><p style="font-size:16px;line-height:24px;margin:16px 0">If this was you, click <a href="${confirmLink}">here</a></p><p style="font-size:16px;line-height:24px;margin:16px 0;margin-top:-5px">If this wasn&#x27;t you, please ignore this email.</p></td></tr></tbody></table></td></tr></tbody></table><table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding:45px 0 0 0"><tbody><tr><td><img src="https://korabi-ecommerce-admin.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdncmjp41z%2Fimage%2Fupload%2Fv1704195824%2Fpcgb9zsaecqlryiuwifi.png&amp;w=1920&amp;q=75" style="display:block;outline:none;border:none;text-decoration:none" width="620" /></td></tr></tbody></table><p style="font-size:12px;line-height:24px;margin:16px 0;text-align:center;color:rgb(0,0,0, 0.7)">© 2024 | DevHub</p></td></tr></tbody></table></body></html>`,
+  });
+};
 
 export const sendPasswordResetEmail = async (email: string, token: string, name: string) => {
   const resetPasswordLink = `${domain}/auth/new-password?token=${token}`;
 
-  await resend.emails.send({
-    from: "onboarding@resend.dev",
+  await transporter.sendMail({
+    from: process.env.GMAIL_EMAIL,
     to: email,
-    subject: "[DevHub]: Reset you password.",
-    react: PasswordResetEmail({ resetPasswordLink: resetPasswordLink, name: name })
+    subject: "[DevHub]: Account Password Reset.",
+    html: `<html dir="ltr" lang="en"><head><link rel="preload" as="image" href="https://korabi-ecommerce-admin.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdncmjp41z%2Fimage%2Fupload%2Fv1705413254%2Fpwahxm6eedameqqygcn5.png&amp;w=1920&amp;q=75"/><link rel="preload" as="image" href="https://korabi-ecommerce-admin.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdncmjp41z%2Fimage%2Fupload%2Fv1704195773%2Fskhemiousn5nzs3vib1d.png&amp;w=1920&amp;q=75"/><link rel="preload" as="image" href="https://korabi-ecommerce-admin.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdncmjp41z%2Fimage%2Fupload%2Fv1704195824%2Fpcgb9zsaecqlryiuwifi.png&amp;w=1920&amp;q=75"/><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/></head><body style="background-color:#fff;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Oxygen-Sans,Ubuntu,Cantarell,&quot;Helvetica Neue&quot;,sans-serif"><table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="max-width:37.5em"><tbody><tr style="width:100%"><td><table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding:30px 20px"></table><table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="border:1px solid rgb(0,0,0, 0.1);border-radius:3px;overflow:hidden"><tbody><tr><td><img src="https://korabi-ecommerce-admin.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdncmjp41z%2Fimage%2Fupload%2Fv1704195773%2Fskhemiousn5nzs3vib1d.png&amp;w=1920&amp;q=75" style="display:block;outline:none;border:none;text-decoration:none" width="620"/><table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding:20px 40px;padding-bottom:0"><tbody style="width:100%"><tr style="width:100%"><td data-id="__react-email-column"><h1 style="font-size:32px;font-weight:bold;text-align:center">Hi <!-- -->${name}<!-- -->,</h1><h2 style="font-size:26px;font-weight:bold;text-align:center">We noticed a recent attempt to reset your DevHub account password.</h2><p style="font-size:16px;line-height:24px;margin:16px 0">If this was you, click <a href="${resetPasswordLink}">here</a></p><p style="font-size:16px;line-height:24px;margin:16px 0;margin-top:-5px">If this wasn&#x27;t you, please ignore this email.</p></td></tr></tbody></table></td></tr></tbody></table><table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding:45px 0 0 0"><tbody><tr><td><img src="https://korabi-ecommerce-admin.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdncmjp41z%2Fimage%2Fupload%2Fv1704195824%2Fpcgb9zsaecqlryiuwifi.png&amp;w=1920&amp;q=75" style="display:block;outline:none;border:none;text-decoration:none" width="620"/></td></tr></tbody></table><p style="font-size:12px;line-height:24px;margin:16px 0;text-align:center;color:rgb(0,0,0, 0.7)">© 2024 | DevHub</p></td></tr></tbody></table></body></html>`
   })
 }
 
 export const sendTwoFactorTokenEmail = async (email: string, token: string, name: string) => {
-  await resend.emails.send({
-    from: "onboarding@resend.dev",
+  await transporter.sendMail({
+    from: process.env.GMAIL_EMAIL,
     to: email,
-    subject: "[DevHub]: Please verify Login Attempt.",
-    react: TwoFactorEmail({ token, name })
+    subject: "[DevHub]: Confirm Login Attempt.",
+    html: `<html dir="ltr" lang="en"><head><link rel="preload" as="image" href="https://korabi-ecommerce-admin.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdncmjp41z%2Fimage%2Fupload%2Fv1704195942%2Fzxr7vlhj7zsvffcclohc.png&amp;w=1920&amp;q=75"/><link rel="preload" as="image" href="https://korabi-ecommerce-admin.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdncmjp41z%2Fimage%2Fupload%2Fv1704195773%2Fskhemiousn5nzs3vib1d.png&amp;w=1920&amp;q=75"/><link rel="preload" as="image" href="https://korabi-ecommerce-admin.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdncmjp41z%2Fimage%2Fupload%2Fv1704195824%2Fpcgb9zsaecqlryiuwifi.png&amp;w=1920&amp;q=75"/><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/></head><body style="background-color:#fff;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Oxygen-Sans,Ubuntu,Cantarell,&quot;Helvetica Neue&quot;,sans-serif"><table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="max-width:37.5em"><tbody><tr style="width:100%"><td><table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="border:1px solid rgb(0,0,0, 0.1);border-radius:3px;overflow:hidden"><tbody><tr><td><img src="https://korabi-ecommerce-admin.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdncmjp41z%2Fimage%2Fupload%2Fv1704195773%2Fskhemiousn5nzs3vib1d.png&amp;w=1920&amp;q=75" style="display:block;outline:none;border:none;text-decoration:none" width="620"/><table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding:20px 40px;padding-bottom:0"><tbody style="width:100%"><tr style="width:100%"><td data-id="__react-email-column"><h1 style="font-size:1.875rem;line-height:2.25rem;font-weight:700;text-align:center">Hi <!-- -->${name}<!-- -->,</h1><h2 style="font-size:1.5rem;line-height:2rem;font-weight:600">We noticed a recent attempt to login to your DevHub account. If this was you, please enter the following code to complete the login process.</h2><hr style="width:100%;border:none;border-top:1px solid #eaeaea;font-weight:600"/><p style="font-size:1.25rem;line-height:1.75rem;margin:16px 0;margin-top:0.75rem">This is your 2FA code:<br/><span style="font-size:1.5rem;line-height:2rem;margin-top:0.5rem;font-weight:700;letter-spacing:0.05em">${token}</span><br/><span style="margin-top:0.5rem;font-size:1.125rem;line-height:1.75rem">This code will expire in 5 minutes.</span></p><p style="font-size:16px;line-height:24px;margin:16px 0">If this was not you, you can ignore this email.</p></td></tr></tbody></table></td></tr></tbody></table><table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding:45px 0 0 0"><tbody><tr><td><img src="https://korabi-ecommerce-admin.vercel.app/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdncmjp41z%2Fimage%2Fupload%2Fv1704195824%2Fpcgb9zsaecqlryiuwifi.png&amp;w=1920&amp;q=75" style="display:block;outline:none;border:none;text-decoration:none" width="620"/></td></tr></tbody></table><p style="font-size:12px;line-height:24px;margin:16px 0;text-align:center;color:rgb(0,0,0, 0.7)">© 2024 | DevHub</p></td></tr></tbody></table></body></html>`
   })
 }

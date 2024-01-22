@@ -109,9 +109,9 @@ const PostForm = () => {
                     <FormControl>
                       <Textarea
                         disabled={isLoading}
-                        placeholder="Forms are an integral part of web development, allowing users to interact with and submit data to a website. Next.js, a popular React framework, provides a seamless way to handle forms while leveraging its server-side rendering capabilities."
+                        placeholder="The post content goes here feel free to use markdown formatting for making the post look better, some markdown formatting tips are: For different headings use; For the biggest heading use a # and then the heading so it would look something like this: # Heading 1 and then go all the way down so; # Heading 1, ## Heading 2, ### Heading 3, #### Heading 4 and finally ##### Heading 5. For code use tripple backtics so; ```code here```. You can also make different types of lists such as: un-ordered lists; * List item, ordered-lists: 1. List item. You can also make text bold; **bold**. And italic *italic*."
                         {...field}
-                        rows={20}
+                        rows={14}
                       />
                     </FormControl>
                     <FormDescription>

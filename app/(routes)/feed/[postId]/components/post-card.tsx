@@ -56,7 +56,7 @@ export const PostCard: React.FC<PostCardProps> = ({
     <div className="flex py-20 items-center justify-center">
       <Card
         onClick={onClick}
-        className={cn("lg:w-[650px] sm:w-[500px] w-full select-none", className)}
+        className={cn("lg:w-[800px] sm:w-[500px] w-full select-none", className)}
       >
         <CardHeader>
           <CardTitle className="text-4xl tracking-tight">
@@ -94,13 +94,10 @@ export const PostCard: React.FC<PostCardProps> = ({
                   </HoverCard>
                 </div>
               </div>
-              {logedInId === data.userId ? <Button variant='outline' className="mt-4 items-center" onClick={() => router.push(`/feed/${data.id}/edit`)}><Edit className="h-4 w-4" /> <span className="ml-2">Edit Post</span></Button> : null}
+              {logedInId === data.userId ? <Button variant='outline' className="my-4 items-center" onClick={() => router.push(`/feed/${data.id}/edit`)}><Edit className="h-4 w-4" /> <span className="ml-2">Edit Post</span></Button> : null}
             </div>
           </div>
-        </CardHeader>
-        <CardContent>
-          {children}
-          <div className="mt-4 relative aspect-video rounded-lg overflow-hidden bg-cover">
+          <div className="py-12 relative aspect-[2/1] rounded-lg overflow-hidden bg-cover">
             <Image
               src={data.imageUrl}
               fill
@@ -108,6 +105,10 @@ export const PostCard: React.FC<PostCardProps> = ({
               className="rounded-lg"
             />
           </div>
+        </CardHeader>
+        <CardContent>
+          {children}
+
         </CardContent>
 
         <CardFooter className="w-full">

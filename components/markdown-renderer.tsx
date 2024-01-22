@@ -25,10 +25,16 @@ export const MarkdownRenderer = ({ content, children }: Props) => {
           </>
         ),
         h2: ({ node, ...props }) => (
-          <h2 className="text-xl font-semibold" {...props} />
+          <h2 className="text-xl font-semibold mb-4" {...props} />
         ),
         h3: ({ node, ...props }) => (
-          <h3 className="text-lg font-semibold" {...props} />
+          <h3 className="text-lg font-semibold mb-4" {...props} />
+        ),
+        h4: ({ node, ...props }) => (
+          <h4 className="text-base font-semibold mb-4" {...props} />
+        ),
+        h5: ({ node, ...props }) => (
+          <h5 className="text-sm font-semibold mb-4" {...props} />
         ),
         blockquote: ({ node, ...props }) => (
           <blockquote className="pl-4" {...props} />

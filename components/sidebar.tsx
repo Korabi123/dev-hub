@@ -61,7 +61,7 @@ const Sidebar = () => {
             </SheetTrigger>
 
             <SheetContent side="left">
-              <div className="h-full px-3 py-4 overflow-y-auto">
+              <div className="h-full py-4 overflow-y-auto">
                 <Link href="/">
                   <p className="select-none scroll-m-20 text-3xl font-extrabold tracking-tighter transition-colors first:mt-0">
                     DevHub
@@ -107,7 +107,7 @@ const Sidebar = () => {
                     ))}
                   </div>
                   <div className="w-full">
-                    {/* <Link href={"/settings"}>
+                    <Link href={"/settings"}>
                       <Button
                         variant={"outline"}
                         className={cn(
@@ -118,7 +118,7 @@ const Sidebar = () => {
                         <Settings size={15} />
                         <p className="ml-2">Settings</p>
                       </Button>
-                    </Link> */}
+                    </Link>
                   </div>
                 </ul>
               </div>
@@ -176,7 +176,7 @@ const Sidebar = () => {
               ))}
             </div>
             <div className="w-full">
-              {/* <Link href={"/settings"}>
+              <Link href={"/settings"}>
                 <Button
                   variant={"outline"}
                   className={cn(
@@ -187,7 +187,7 @@ const Sidebar = () => {
                   <Settings size={15} />
                   <p className="ml-2">Settings</p>
                 </Button>
-              </Link> */}
+              </Link>
             </div>
           </ul>
         </div>

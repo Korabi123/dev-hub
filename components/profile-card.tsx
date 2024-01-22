@@ -18,6 +18,7 @@ import { PostCard } from "./post-card";
 import { FaUser } from "react-icons/fa";
 import { currentUser } from "@/lib/auth";
 import { CgProfile } from "react-icons/cg";
+import { Badge } from "./ui/badge";
 
 const ProfileCard = async () => {
   const user = await currentUser();
@@ -47,18 +48,24 @@ const ProfileCard = async () => {
                 </AvatarFallback>
               </Avatar>
               <div className="md:block hidden">
-                <div>
-                  {user?.name && (
-                    <p className="scroll-m-20 text-4xl font-extrabold tracking-tight text-end lg:text-5xl">
-                      {user?.name}
-                    </p>
-                  )}
-                  <div className="flex justify-end">
-                    {user?.username && (
-                      <p className="scroll-m-20 text-2xl font-medium text-start text-zinc-400 tracking-tight">
-                        @{user?.username}
-                      </p>
-                    )}
+                <div className="flex justify-end space-x-4">
+                  <div>
+                    <div className="flex justify-end space-x-4">
+                      {user?.name && (
+                        <div className="flex space-x-4">
+                          <p className="scroll-m-20 text-4xl font-extrabold tracking-tight text-end lg:text-5xl">
+                            {user?.name}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex justify-end">
+                      {user?.username && (
+                        <p className="scroll-m-20 text-2xl font-medium text-start text-zinc-400 tracking-tight">
+                          @{user?.username}
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-2">
@@ -92,7 +99,8 @@ const ProfileCard = async () => {
                 <div className="grid grid-cols-2 gap-2 md:hidden">
                   <Link href="/profile/edit">
                     <Button variant={"outline"} className="mt-4 w-full">
-                      <Edit size={15} /> <span className="ml-2">Edit Profile</span>
+                      <Edit size={15} />{" "}
+                      <span className="ml-2">Edit Profile</span>
                     </Button>
                   </Link>
                   <Link href="/profile/edit/picture">
