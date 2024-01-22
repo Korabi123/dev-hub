@@ -44,16 +44,16 @@ const ShareDrawer: React.FC<Props> = ({ data }) => {
           <Separator />
           <div className="flex gap-2 mt-4">
             <ShareButtons
-              urlFacebook={`${window.location}/${data.id}`}
-              urlReddit={`${window.location}/${data.id}`}
+              urlFacebook={`${process.env.NEXT_PUBLIC_APP_URL}/${data.id}`}
+              urlReddit={`${process.env.NEXT_PUBLIC_APP_URL}/${data.id}`}
             />
           </div>
           <br />
           <h2>Link</h2>
-          <Input defaultValue={`${window.location}/${data.id}`} readOnly />
+          <Input defaultValue={`${process.env.NEXT_PUBLIC_APP_URL}/${data.id}`} readOnly />
           <Button
             onClick={() => {
-              navigator.clipboard.writeText(`${window.location}/${data.id}`);
+              navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_APP_URL}/${data.id}`);
               setIsCopied(true);
             }}
             size="sm"
