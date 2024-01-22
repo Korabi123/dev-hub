@@ -43,16 +43,16 @@ const ShareDialog: React.FC<Props> = ({ data }) => {
         <Separator />
         <div className="flex gap-2">
           <ShareButtons
-            urlFacebook={`${process.env.NEXT_PUBLIC_APP_URL}/${data.id}`}
-            urlReddit={`${process.env.NEXT_PUBLIC_APP_URL}/${data.id}`}
+            urlFacebook={`${process.env.NEXT_PUBLIC_APP_URL}/feed/${data.id}`}
+            urlReddit={`${process.env.NEXT_PUBLIC_APP_URL}/feed/${data.id}`}
           />
         </div>
         <br />
         <h2>Link</h2>
-        <Input defaultValue={`${process.env.NEXT_PUBLIC_APP_URL}/${data.id}`} readOnly />
+        <Input defaultValue={`${process.env.NEXT_PUBLIC_APP_URL}/feed/${data.id}`} readOnly />
         <Button
           onClick={() => {
-            navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_APP_URL}/${data.id}`);
+            navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_APP_URL}/feed/${data.id}`);
             setIsCopied(true);
           }}
           size="sm"
