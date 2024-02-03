@@ -4,6 +4,7 @@ import "@/app/globals.css";
 import { SessionProvider } from 'next-auth/react'
 
 import { auth } from "@/auth";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default async function RootLayout({
   return (
     <SessionProvider session={session}>
       <html lang="en">
+        <GoogleAnalytics GA_MEASUREMENT_ID="G-6VC7BPJ148" />
         <body className={inter.className}>
           {children}
         </body>
