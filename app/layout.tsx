@@ -7,8 +7,6 @@ import { Analytics } from "@vercel/analytics/react";
 import { auth } from "@/auth";
 
 import GoogleAnalytics from "@/components/google/GoogleAnalytics";
-// import GoogleTagManager from "@/components/google/GoogleTagManager";
-import GoogleTagManagerNoScript from "@/components/google/GoogleTagManagerNoScript";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,10 +25,9 @@ export default async function RootLayout({
   return (
     <SessionProvider session={session}>
       <html lang="en">
-        {/* <GoogleTagManager /> */}
+        <meta name="google-site-verification" content="lekmOW1tN9N3gVV3pCGAkjlhp8sa54hIhE1vUkSBIoE" />
         <GoogleAnalytics GA_MEASUREMENT_ID="G-6VC7BPJ148" />
         <body className={inter.className}>
-          <GoogleTagManagerNoScript />
           {children}
           <Analytics />
         </body>
