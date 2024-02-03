@@ -27,7 +27,7 @@ export default async function RootLayout({
   return (
     <SessionProvider session={session}>
       <html lang="en">
-        <GoogleTagManager />
+        {/* <GoogleTagManager /> */}
         <GoogleAnalytics GA_MEASUREMENT_ID="G-6VC7BPJ148" />
         <body className={inter.className}>
           <GoogleTagManagerNoScript />
