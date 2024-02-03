@@ -1,4 +1,3 @@
-import prismadb from "@/lib/prismadb";
 import EditPostForm from "./components/edit-form";
 
 import { currentUser } from "@/lib/auth";
@@ -27,7 +26,7 @@ const EditPage = async ({ params }: { params: { postId: string } }) => {
   
   if (postById.success)
 
-    if (postById && logedInUserId === postById.success?.userId) {
+    if (postById && logedInUserId === postById.success?.userId || user?.role === "ADMIN") {
       return (
         <div>
           <EditPostForm data={postById.success} paramsId={params.postId} />
