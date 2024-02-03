@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/app/globals.css";
 import { SessionProvider } from 'next-auth/react'
+import { Analytics } from "@vercel/analytics/react";
 
 import { auth } from "@/auth";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
@@ -26,6 +27,7 @@ export default async function RootLayout({
         <GoogleAnalytics GA_MEASUREMENT_ID="G-6VC7BPJ148" />
         <body className={inter.className}>
           {children}
+          <Analytics />
         </body>
       </html>
     </SessionProvider>
