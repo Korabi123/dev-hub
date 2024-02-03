@@ -1,4 +1,18 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 const TermsPage = () => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true)
+  });
+
+  if (!isMounted) {
+    return null;
+  }
+
   return (
     <div>
       <h1 className="mt-14 text-6xl font-bold tracking-tighter text-center">TERMS OF SERVICE</h1>
@@ -7,14 +21,14 @@ const TermsPage = () => {
       <div className="w-full mt-14 flex justify-center">
         <p className="max-w-[1024px] leading-10">
           We are DevHub (&quot;Company,&quot;&quot;we,&quot; &quot;us,&quot; &quot;our&quot; ). We operate the
-          website <a className="text-blue-500 underline" href="https://dev-hub-korabii.vercel.app">https://dev-hub-korabii.vercel.app</a> (the&quot;Site" ) , as well as
+          website <a className="text-blue-500 underline&quot; href=&quot;https://dev-hub-korabii.vercel.app">https://dev-hub-korabii.vercel.app</a> (the&quot;Site&quot; ) , as well as
           any other related products and services that refer or link to these
-          legal terms (the&quot;Legal Terms") (collectively, the&quot;Services"). We
+          legal terms (the&quot;Legal Terms&quot;) (collectively, the&quot;Services&quot;). We
           provide a service in which you can view all the latest new about the
           world of programming in one place. You can contact us by email at
           onboarding.devhub@gmail.com.These Legal Terms constitute a legally
           binding agreement made between you, whether personally or on behalf of
-          an entity (&quot;you"), and DevHub, concerning your access to and use of
+          an entity (&quot;you&quot;), and DevHub, concerning your access to and use of
           the Services. You agree that by accessing the Services, you have read,
           understood, and agreed to be bound by all of these Legal Terms. IF YOU
           DO NOT AGREE WITH ALL OF THESE LEGAL TERMS, THEN YOU ARE EXPRESSLY
@@ -52,12 +66,12 @@ const TermsPage = () => {
           intellectual property rights in our Services, including all source
           code, databases, functionality, software, website designs, audio,
           video, text, photographs, and graphics in the Services (collectively,
-          the&quot;Content"), as well as the trademarks, service marks, and logos
-          contained therein (the&quot;Marks" ). Our Content and Marks are protected
+          the&quot;Content&quot;), as well as the trademarks, service marks, and logos
+          contained therein (the&quot;Marks&quot; ). Our Content and Marks are protected
           by copyright and trademark laws (and various other intellectual
           property rights and unfair competition laws) and treaties in the
           United States and around the world. The Content and Marks are provided
-          in or through the Services&quot;AS IS" for your personal, non-commercial
+          in or through the Services&quot;AS IS&quot; for your personal, non-commercial
           use or internal business purpose only. Your use of our Services
           Subject to your compliance with these Legal Terms, including the
          &quot;PROHIBITED ACTIVITIES&quot; section below, we grant you a non-exclusive,
@@ -87,7 +101,7 @@ const TermsPage = () => {
           and (b) obligations you have when you post or upload any content
           through the Services. Submissions: By directly sending us any
           question, comment, suggestion, idea, feedback, or other information
-          about the Services ("Submissions"), you agree to assign to us all
+          about the Services (&quot;Submissions&quot;), you agree to assign to us all
           intellectual property rights in such Submission. You agree that we
           shall own this Submission and be entitled to its unrestricted use and
           dissemination for any lawful purpose, commercial or otherwise, without
@@ -98,7 +112,7 @@ const TermsPage = () => {
           broadcast content and materials to us or through the Services,
           including but not limited to text, writings, video, audio,
           photographs, music, graphics, comments, reviews, rating suggestions,
-          personal information, or other material (&quot;Contributions"). Any
+          personal information, or other material (&quot;Contributions&quot;). Any
           Submission that is publicly posted shall also be treated as a
           Contribution. You understand that Contributions may be viewable by
           other users of the Services . When you post Contributions, you grant
@@ -213,9 +227,9 @@ const TermsPage = () => {
           username of another user. Upload or transmit (or attempt to upload or
           to transmit) any material that acts as a passive or active information
           collection or transmission mechanism, including without limitation,
-          clear graphics interchange formats ("gifs"), 1×1 pixels, web bugs,
-          cookies, or other similar devices (sometimes referred to as&quot;spyware"
-          or&quot;passive collection mechanisms" or&quot;pcms" ). Interfere with,
+          clear graphics interchange formats (&quot;gifs&quot;), 1×1 pixels, web bugs,
+          cookies, or other similar devices (sometimes referred to as&quot;spyware&quot;
+          or&quot;passive collection mechanisms&quot; or&quot;pcms&quot; ). Interfere with,
           disrupt, or create an undue burden on the Services or the networks or
           services connected to the Services. Harass, annoy, intimidate, or
           threaten any of our employees or agents engaged in providing any
@@ -250,7 +264,7 @@ const TermsPage = () => {
           materials to us or on the Services, including but not limited to text,
           writings, video, audio, photographs, graphics, comments, suggestions,
           or personal information or other material (collectively,
-         &quot;Contributions"). Contributions may be viewable by other users of the
+         &quot;Contributions&quot;). Contributions may be viewable by other users of the
           Services and through third-party websites. As such, any Contributions
           you transmit may be treated as non-confidential and non-proprietary.
           When you create or make available any Contributions, you thereby
@@ -351,7 +365,7 @@ const TermsPage = () => {
           display, perform, and/or distribute all content relating to review. 9.
           SOCIAL MEDIA As part of the functionality of the Services, you may
           link your account with online accounts you have with third-party
-          service providers (each such account, a&quot;Third-Party Account") by
+          service providers (each such account, a&quot;Third-Party Account&quot;) by
           either: (1) providing your Third-Party Account login information
           through the Services; or (2) allowing us to access your Third-Party
           Account, as is permitted under the applicable terms and conditions
@@ -365,7 +379,7 @@ const TermsPage = () => {
           Third-Party Account. By granting us access to any Third-Party
           Accounts, you understand that (1) we may access, make available, and
           store (if applicable) any content that you have provided to and stored
-          in your Third-Party Account (the&quot;Social Network Content") so that it
+          in your Third-Party Account (the&quot;Social Network Content&quot;) so that it
           is available on and through the Services via your account, including
           without limitation any friend lists and (2) we may submit to and
           receive from your Third-Party Account additional information to the
@@ -431,7 +445,7 @@ const TermsPage = () => {
           If you believe that any material available on or through the Services
           infringes upon any copyright you own or control, please immediately
           notify us using the contact information provided below (a
-         &quot;Notification"). A copy of your Notification will be sent to the
+         &quot;Notification&quot;). A copy of your Notification will be sent to the
           person who posted or stored the material addressed in the
           Notification. Please be advised that pursuant to applicable law you
           may be held liable for damages if you make material misrepresentations
@@ -478,8 +492,8 @@ const TermsPage = () => {
           connection with these Legal Terms. 16. DISPUTE RESOLUTION Informal
           Negotiations To expedite resolution and control the cost of any
           dispute, controversy, or claim related to these Legal Terms (each a
-         &quot;Dispute" and collectively, the&quot;Disputes") brought by either you or
-          us (individually, a&quot;Party" and collectively, the&quot;Parties"), the
+         &quot;Dispute&quot; and collectively, the&quot;Disputes&quot;) brought by either you or
+          us (individually, a&quot;Party&quot; and collectively, the&quot;Parties&quot;), the
           Parties agree to first attempt to negotiate any Dispute (except those
           Disputes expressly provided below) informally for at least thirty (30)
           days before initiating arbitration. Such informal negotiations

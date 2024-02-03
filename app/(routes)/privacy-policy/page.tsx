@@ -1,7 +1,7 @@
 "use client";
 
-import { cn } from"@/lib/utils";
-import { Poppins } from"next/font/google";
+import { cn } from "@/lib/utils"
+import { Poppins } from "next/font/google";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["100","200","300","400","500","600","700","800","900"] }); 
 
@@ -76,15 +76,15 @@ const PrivacyPolicyPage = () => {
           }
 
           a:hover,
-          a[rel~="nofollow"] {
+          a[rel~=&quot;nofollow&quot;] {
             text-decoration: underline;
           }
 
-          a[rel~="nofollow"] {
+          a[rel~=&quot;nofollow&quot;] {
             color: #0452a5;
           }
 
-          a[rel~="nofollow"]:hover {
+          a[rel~=&quot;nofollow&quot;]:hover {
             text-decoration: none;
           }
 
@@ -185,7 +185,6 @@ const PrivacyPolicyPage = () => {
           <div className="container">
             <div
               className="tab-content translations-content-item en visible"
-              id="en"
             >
               <h1 className="py-4">Privacy Policy</h1>
               <p className="py-4 font-bold tracking-tighter">Last updated: February 03, 2024</p>
@@ -221,7 +220,7 @@ const PrivacyPolicyPage = () => {
                   <p>
                     <strong>Affiliate</strong> means an entity that controls, is
                     controlled by or is under common control with a party, where
-                   &quot;control" means ownership of 50% or more of the shares,
+                   &quot;control&quot; means ownership of 50% or more of the shares,
                     equity interest or other securities entitled to vote for
                     election of directors or other managing authority.
                   </p>
@@ -229,7 +228,7 @@ const PrivacyPolicyPage = () => {
                 <li>
                   <p>
                     <strong>Company</strong> (referred to as either&quot;the
-                    Company",&quot;We",&quot;Us" or&quot;Our" in this Agreement) refers to
+                    Company&quot;,&quot;We&quot;,&quot;Us&quot; or&quot;Our&quot; in this Agreement) refers to
                     DevHub.
                   </p>
                 </li>
@@ -413,7 +412,7 @@ const PrivacyPolicyPage = () => {
                 </li>
               </ul>
               <p>
-                Cookies can be&quot;Persistent" or&quot;Session" Cookies. Persistent
+                Cookies can be&quot;Persistent&quot; or&quot;Session&quot; Cookies. Persistent
                 Cookies remain on Your personal computer or mobile device when
                 You go offline, while Session Cookies are deleted as soon as You
                 close Your web browser. You can learn more about cookies on{" "}
@@ -742,7 +741,7 @@ const PrivacyPolicyPage = () => {
               <p>
                 We will let You know via email and/or a prominent notice on Our
                 Service, prior to the change becoming effective and update the
-               &quot;Last updated" date at the top of this Privacy Policy.
+               &quot;Last updated&quot; date at the top of this Privacy Policy.
               </p>
               <p>
                 You are advised to review this Privacy Policy periodically for
