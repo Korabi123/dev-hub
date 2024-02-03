@@ -7,7 +7,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { auth } from "@/auth";
 
 import GoogleAnalytics from "@/components/google/GoogleAnalytics";
-import GoogleTagManager from "@/components/google/GoogleTagManager";
+// import GoogleTagManager from "@/components/google/GoogleTagManager";
 import GoogleTagManagerNoScript from "@/components/google/GoogleTagManagerNoScript";
 
 const inter = Inter({ subsets: ["latin"] });
