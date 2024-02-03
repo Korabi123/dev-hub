@@ -235,7 +235,7 @@ const TermsPage = () => {
           threaten any of our employees or agents engaged in providing any
           portion of the Services to you. Attempt to bypass any measures of the
           Services designed to prevent or restrict access to the Services, or
-          any portion of the Services. Copy or adapt the Services' software,
+          any portion of the Services. Copy or adapt the Services&apos; software,
           including but not limited to Flash, PHP, HTML, JavaScript, or other
           code. Except as permitted by applicable law, decipher, decompile,
           disassemble, or reverse engineer any of the software comprising or in
@@ -541,7 +541,7 @@ const TermsPage = () => {
           YOUR USE THEREOF, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
           WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
           NON-INFRINGEMENT. WE MAKE NO WARRANTIES OR REPRESENTATIONS ABOUT THE
-          ACCURACY OR COMPLETENESS OF THE SERVICES' CONTENT OR THE CONTENT OF
+          ACCURACY OR COMPLETENESS OF THE SERVICES&apos; CONTENT OR THE CONTENT OF
           ANY WEBSITES OR MOBILE APPLICATIONS LINKED TO THE SERVICES AND WE WILL
           ASSUME NO LIABILITY OR RESPONSIBILITY FOR ANY (1) ERRORS, MISTAKES, OR
           INACCURACIES OF CONTENT AND MATERIALS, (2) PERSONAL INJURY OR PROPERTY
