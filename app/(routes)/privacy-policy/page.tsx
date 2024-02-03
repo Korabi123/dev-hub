@@ -1,9 +1,9 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import { Poppins } from "next/font/google";
+import { cn } from"@/lib/utils";
+import { Poppins } from"next/font/google";
 
-const poppins = Poppins({ subsets: ["latin"], weight: ["100", "200","300", "400", "500", "600", "700","800", "900"] }); 
+const poppins = Poppins({ subsets: ["latin"], weight: ["100","200","300","400","500","600","700","800","900"] }); 
 
 const PrivacyPolicyPage = () => {
   return (
@@ -221,15 +221,15 @@ const PrivacyPolicyPage = () => {
                   <p>
                     <strong>Affiliate</strong> means an entity that controls, is
                     controlled by or is under common control with a party, where
-                    "control" means ownership of 50% or more of the shares,
+                   &quot;control" means ownership of 50% or more of the shares,
                     equity interest or other securities entitled to vote for
                     election of directors or other managing authority.
                   </p>
                 </li>
                 <li>
                   <p>
-                    <strong>Company</strong> (referred to as either "the
-                    Company", "We", "Us" or "Our" in this Agreement) refers to
+                    <strong>Company</strong> (referred to as either&quot;the
+                    Company",&quot;We",&quot;Us" or&quot;Our" in this Agreement) refers to
                     DevHub.
                   </p>
                 </li>
@@ -335,7 +335,7 @@ const PrivacyPolicyPage = () => {
                 Usage Data is collected automatically when using the Service.
               </p>
               <p>
-                Usage Data may include information such as Your Device's
+                Usage Data may include information such as Your Device&apos;s
                 Internet Protocol address (e.g. IP address), browser type,
                 browser version, the pages of our Service that You visit, the
                 time and date of Your visit, the time spent on those pages,
@@ -371,13 +371,13 @@ const PrivacyPolicyPage = () => {
                 If You decide to register through or otherwise grant us access
                 to a Third-Party Social Media Service, We may collect Personal
                 data that is already associated with Your Third-Party Social
-                Media Service's account, such as Your name, Your email address,
+                Media Service&apos;s account, such as Your name, Your email address,
                 Your activities or Your contact list associated with that
                 account.
               </p>
               <p>
                 You may also have the option of sharing additional information
-                with the Company through Your Third-Party Social Media Service's
+                with the Company through Your Third-Party Social Media Service&apos;s
                 account. If You choose to provide such information and Personal
                 Data, during registration or otherwise, You are giving the
                 Company permission to use, share, and store it in a manner
@@ -413,7 +413,7 @@ const PrivacyPolicyPage = () => {
                 </li>
               </ul>
               <p>
-                Cookies can be "Persistent" or "Session" Cookies. Persistent
+                Cookies can be&quot;Persistent" or&quot;Session" Cookies. Persistent
                 Cookies remain on Your personal computer or mobile device when
                 You go offline, while Session Cookies are deleted as soon as You
                 close Your web browser. You can learn more about cookies on{" "}
@@ -510,7 +510,7 @@ const PrivacyPolicyPage = () => {
                   <p>
                     <strong>To contact You:</strong> To contact You by email,
                     telephone calls, SMS, or other equivalent forms of
-                    electronic communication, such as a mobile application's
+                    electronic communication, such as a mobile application&apos;s
                     push notifications regarding updates or informative
                     communications related to the functionalities, products or
                     contracted services, including the security updates, when
@@ -620,7 +620,7 @@ const PrivacyPolicyPage = () => {
               <h3>Transfer of Your Personal Data</h3>
               <p>
                 Your information, including Personal Data, is processed at the
-                Company's operating offices and in any other places where the
+                Company&apos;s operating offices and in any other places where the
                 parties involved in the processing are located. It means that
                 this information may be transferred to — and maintained on —
                 computers located outside of Your state, province, country or
@@ -704,7 +704,7 @@ const PrivacyPolicyPage = () => {
                 use commercially acceptable means to protect Your Personal Data,
                 We cannot guarantee its absolute security.
               </p>
-              <h2>Children's Privacy</h2>
+              <h2>Children&apos;s Privacy</h2>
               <p>
                 Our Service does not address anyone under the age of 13. We do
                 not knowingly collect personally identifiable information from
@@ -718,14 +718,14 @@ const PrivacyPolicyPage = () => {
               <p>
                 If We need to rely on consent as a legal basis for processing
                 Your information and Your country requires consent from a
-                parent, We may require Your parent's consent before We collect
+                parent, We may require Your parent&apos;s consent before We collect
                 and use that information.
               </p>
               <h2>Links to Other Websites</h2>
               <p>
                 Our Service may contain links to other websites that are not
                 operated by Us. If You click on a third party link, You will be
-                directed to that third party's site. We strongly advise You to
+                directed to that third party&apos;s site. We strongly advise You to
                 review the Privacy Policy of every site You visit.
               </p>
               <p>
@@ -742,7 +742,7 @@ const PrivacyPolicyPage = () => {
               <p>
                 We will let You know via email and/or a prominent notice on Our
                 Service, prior to the change becoming effective and update the
-                "Last updated" date at the top of this Privacy Policy.
+               &quot;Last updated" date at the top of this Privacy Policy.
               </p>
               <p>
                 You are advised to review this Privacy Policy periodically for
