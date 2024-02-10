@@ -26,6 +26,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { useCurrentUser } from "@/hooks/use-current-user";
+import { ModeToggle } from "../ui/theme-toggle";
 
 const SettingsForm = () => {
   const user = useCurrentUser();
@@ -175,6 +176,18 @@ const SettingsForm = () => {
                   />
                 </>
               )}
+
+              <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
+                <div className="space-y-0.5">
+                  <FormLabel>Dark Mode</FormLabel>
+                  <FormDescription>
+                    Enable Dark Mode for your Account
+                  </FormDescription>
+                </div>
+                <FormControl>
+                  <ModeToggle />
+                </FormControl>
+              </FormItem>
             </div>
             <FormError message={error} />
             <FormSuccess message={success} />
