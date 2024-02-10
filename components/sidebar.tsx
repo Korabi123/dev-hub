@@ -129,7 +129,7 @@ const Sidebar = () => {
 
       {/* Desktop */}
 
-      <aside className="fixed top-0 left-0 z-10 w-72 h-screen transition-transform -translate-x-full sm:translate-x-0">
+      <aside className="fixed top-0 left-0 z-10 w-72 h-screen transition-transform -translate-x-full sm:translate-x-0 dark:border-r-[1px]">
         <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-black/50">
           <Link href="/">
             <p className="select-none scroll-m-20 text-3xl font-extrabold tracking-tighter transition-colors first:mt-0">
