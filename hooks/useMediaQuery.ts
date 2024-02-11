@@ -1,6 +1,8 @@
 const useMediaQuery = (query: string) => {
-  const returnedQuery = window.matchMedia(`${query}`).matches;
-  return returnedQuery;
+  if (typeof window !== 'undefined') {
+    const mediaQuery = window.matchMedia(`${query}`).matches;
+    return mediaQuery;
+  }
 }
  
 export default useMediaQuery;
