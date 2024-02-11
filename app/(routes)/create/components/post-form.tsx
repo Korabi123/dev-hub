@@ -4,7 +4,7 @@ import { set, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "~/button";
 import {
   Form,
   FormControl,
@@ -13,16 +13,16 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from "~/form";
+import { Input } from "~/input";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Textarea } from "@/components/ui/textarea";
+} from "~/card";
+import { Textarea } from "~/textarea";
 import ImageUpload from "./image-upload";
 import { useState } from "react";
 import { cn } from "@/lib/utils";

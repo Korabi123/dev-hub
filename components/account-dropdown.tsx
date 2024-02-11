@@ -11,7 +11,7 @@ import {
   UserPlus,
 } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "~/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -25,7 +25,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "~/dropdown-menu";
 import Link from "next/link";
 
 

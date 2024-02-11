@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
+} from "~/dialog";
 import ShareButtons from "./share-buttons";
 import { Separator } from "./ui/separator";
 import { Input } from "./ui/input";

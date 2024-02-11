@@ -1,10 +1,10 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+import { Avatar, AvatarFallback, AvatarImage } from "~/avatar";
+import { Card, CardContent, CardHeader } from "~/card";
+import { Separator } from "~/separator";
 import prismadb from "@/lib/prismadb";
 import { PostCard } from "@/components/post-card";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button } from "~/button";
 import { Edit } from "lucide-react";
 import { CgProfile } from "react-icons/cg";
 import { User } from "@prisma/client";

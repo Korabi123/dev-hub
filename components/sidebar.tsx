@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Skeleton } from "@/components/ui/skeleton";
+import { Sheet, SheetContent, SheetTrigger } from "~/sheet";
+import { Button } from "~/button";
+import { Avatar, AvatarFallback, AvatarImage } from "~/avatar";
+import { Skeleton } from "~/skeleton";
 
 import { Settings, BookMarked, PlusIcon, MenuIcon } from "lucide-react";
 import { useEffect, useState } from "react";

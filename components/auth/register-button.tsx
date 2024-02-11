@@ -6,7 +6,7 @@ import {
   Dialog,
   DialogContent,
   DialogTrigger,
-} from "@/components/ui/dialog";
+} from "~/dialog";
 import { RegisterForm } from "./register-form";
 
 interface RegisterButtonProps {

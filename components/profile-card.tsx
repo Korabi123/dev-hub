@@ -1,15 +1,15 @@
 // import { auth, clerkClient, useUser } from "@clerk/nextjs";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "~/avatar";
+import { Button } from "~/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+} from "~/card";
+import { Separator } from "~/separator";
 
 import { Edit } from "lucide-react";
 import Link from "next/link";
