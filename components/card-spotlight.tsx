@@ -46,39 +46,31 @@ export const CardSpotlight: React.FC<Props> = ({
   };
 
   return (
-    <>
+    <div
+      ref={divRef}
+      onMouseMove={handleMouseMove}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className="relative max-w-xs rounded-3xl border border-neutral-800 bg-neutral-950 p-8"
+    >
       <div
-        ref={divRef}
-        onMouseMove={handleMouseMove}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        className="block cursor-pointer dark:hidden relative max-w-xs rounded-3xl border border-neutral-800 bg-neutral-950 p-8"
-      >
-        <div
-          className="pointer-events-none absolute -inset-px opacity-0 transition duration-500"
-          style={{
-            opacity,
-            background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(255,255,255,.25), transparent 40%)`,
-          }}
-        />
-        <div className="mb-4 text-white">{icon}</div>
-        <h3 className="mb-2 text-start font-medium tracking-tight text-neutral-100">
-          {title}
-        </h3>
-        <p className="text-sm text-start text-neutral-400">{description}</p>
+        className="pointer-events-none absolute -inset-px opacity-0 transition duration-500"
+        style={{
+          opacity,
+          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(255,255,255,.25), transparent 40%)`,
+        }}
+      />
+      <div className="mb-4 text-white">
+        {icon}
       </div>
-
-      <div className="card-shine-effect dark:block hidden cursor-pointer">
-        <span className="mb-4 text-white">
-          {icon}
-        </span>
-        <h3 className="mb-2 text-start font-medium tracking-tight text-neutral-100">{title}</h3>
-        <p className="text-sm text-start text-neutral-400">
-          {description}
-        </p>
-      </div>
-    </>
+      <h3 className="mb-2 text-start font-medium tracking-tight text-neutral-100">
+        {title}
+      </h3>
+      <p className="text-sm text-start text-neutral-400">
+        {description}
+      </p>
+    </div>
   );
 };

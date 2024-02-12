@@ -2,7 +2,6 @@ import Link from "next/link";
 
 import { NavButton } from "./navbar-button";
 import { currentUser } from "@/lib/auth";
-import { ModeToggle } from "./ui/theme-toggle";
 
 const Navbar = async () => {
   const user = await currentUser();
@@ -15,8 +14,7 @@ const Navbar = async () => {
             <h1 className="tracking-tighter font-bold text-3xl">DevHub</h1>
           </Link>
         </div>
-        <div className="space-x-4 flex items-center">
-          <ModeToggle showIcon />
+        <div>
           <NavButton mode={user ? "feed" : "login"} />
         </div>
       </div>

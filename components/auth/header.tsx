@@ -2,7 +2,6 @@ import { Poppins } from "next/font/google";
 import Image from "next/image";
 
 import { cn } from "@/lib/utils";
-import { useTheme } from "next-themes";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -14,16 +13,10 @@ interface HeaderProps {
 }
 
 export const Header = ({ label }: HeaderProps) => {
-  const { resolvedTheme } = useTheme();
-
   return (
     <div className="w-full flex flex-col gap-y-4 items-center justify-center">
       <div className="flex items-center">
-        {resolvedTheme === "light" ? (
-          <Image src={"/logo-base-256x256.png"} height={40} width={40} alt="logo" />
-        ): (
-          <Image src={"/logo-white-256x256.png"} height={40} width={40} alt="logo" />
-        )}
+        <Image src={"/logo-base-256x256.png"} height={40} width={40} alt="logo" />
         <h1 className={cn(
           "text-3xl ml-2 font-semibold",
           font.className,
