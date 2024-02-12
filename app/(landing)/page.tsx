@@ -1,4 +1,9 @@
 import Navbar from "@/components/navbar";
+
+import { TextTypingEffect } from "@/components/text-typewriter";
+import { SpecialButton } from "@/components/special-button";
+import { ChevronsLeftRight, Globe } from "lucide-react";
+import { CardSpotlight } from "@/components/card-spotlight";
 import { currentUser } from "@/lib/auth";
 import { Hero } from "@/components/hero";
 import { Footer } from "@/components/footer";
