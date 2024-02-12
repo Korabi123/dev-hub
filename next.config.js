@@ -1,22 +1,12 @@
-const { withHydrationOverlay } = require('@builder.io/react-hydration-overlay/next')
+const withMDX = require('@next/mdx')()
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com'
-      },
-      {
-        protocol: 'https',
-        hostname: "res.cloudinary.com"
-      }
-    ] 
+    domains: ["images.unsplash.com", "img.clerk.com", "res.cloudinary.com"] 
   },
   reactStrictMode: false,
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
 }
 
-module.exports = withHydrationOverlay({
-  appRootSelector: "main",
-})(nextConfig)
+module.exports = withMDX(nextConfig)
