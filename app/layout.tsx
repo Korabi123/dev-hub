@@ -15,9 +15,9 @@ export const metadata: Metadata = {
   title: "DevHub | Where Code meets Community",
   description: "Where Code meets Community",
   openGraph: {
-    images: ["https://i.ibb.co/f41CrCt/image.png"],
+    images: ["https://i.ibb.co/wdH1VS4/Screenshot-2024-02-12-132546.png"],
   },
-  metadataBase: new URL("https://i.ibb.co/f41CrCt/image.png")
+  metadataBase: new URL("https://i.ibb.co/wdH1VS4/Screenshot-2024-02-12-132546.png")
 };
 
 export default async function RootLayout({
