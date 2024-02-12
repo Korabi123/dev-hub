@@ -11,7 +11,7 @@ export default async function Home() {
     <>
       <Navbar />
 
-      <main className="dark:bg-black h-full w-full">
+      <main className="h-full w-full">
         <Hero user={user} />
         <About />
       </main>
