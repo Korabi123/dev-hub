@@ -7,6 +7,7 @@ import { CardSpotlight } from "@/components/card-spotlight";
 import { currentUser } from "@/lib/auth";
 import Link from "next/link";
 import Image from "next/image";
+import { WavyBackground } from "@/components/wavy-background";
 
 export default async function Home() {
   const user = await currentUser();
@@ -32,11 +33,11 @@ export default async function Home() {
     <>
       <Navbar />
 
-      <main className="justify-center px-6 py-32 relative">
-        <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]">
+      <main className="justify-center px-6 pb-32 relative">
+        {/* <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]">
           <div className="absolute lg:block hidden bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_500px_at_50%_200px,#d5c5ff,transparent)]"></div>
-        </div>
-        <section className="mt-20" id="landing">
+        </div> */}
+        {/* <section className="mt-20" id="landing">
           <div className="text-center">
             <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight md:text-6xl">
               Your Ultimate
@@ -51,7 +52,21 @@ export default async function Home() {
               <ButtonFlickeringLight mode={!user ? "register" : "feed"} />
             </div>
           </div>
-        </section>
+        </section> */}
+
+        <div className="h-full dark:hidden block justify-center mt-14">
+          <WavyBackground className="max-w-4xl mx-auto pb-36">
+            <h1 className="text-4xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-gray-700 via-gray-900 to-black text-center ">
+              Your Ultimate <br /> Dev Connection.
+            </h1>
+            <div className="mt-4 font-normal md:text-lg text-sm text-neutral-300 max-w-lg text-center mx-auto">
+              <TextTypingEffect />
+              <div className="mt-10">
+                <ButtonFlickeringLight mode={!user ? "register" : "feed"} />
+              </div>
+            </div>
+          </WavyBackground>
+        </div>
 
         <section id="about" className="mt-36 xl:px-96 lg:px-60">
           <div className="text-center">
