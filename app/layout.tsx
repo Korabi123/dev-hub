@@ -7,7 +7,6 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { auth } from "@/auth";
 
-import GoogleAnalytics from "@/components/google/GoogleAnalytics";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { cn } from "@/lib/utils";
 
@@ -29,7 +28,6 @@ export default async function RootLayout({
     <SessionProvider session={session}>
       <html lang="en">
         <meta name="google-site-verification" content="lekmOW1tN9N3gVV3pCGAkjlhp8sa54hIhE1vUkSBIoE" />
-        <GoogleAnalytics GA_MEASUREMENT_ID="G-6VC7BPJ148" />
         <body className={cn("dark:bg-black", inter.className)}>
           <ThemeProvider
             attribute="class"
