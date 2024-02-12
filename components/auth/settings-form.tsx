@@ -12,19 +12,19 @@ import {
   FormLabel,
   FormDescription,
   FormMessage,
-} from "~/form";
+} from "@/components/ui/form";
 import { FormSuccess } from "@/components/form-success";
 import { FormError } from "@/components/form-error";
-import { Input } from "~/input";
-import { Switch } from "~/switch";
+import { Input } from "@/components/ui/input";
+import { Switch } from "@/components/ui/switch";
 
 import { useState, useTransition } from "react";
 import { useSession } from "next-auth/react";
 
 import { settings } from "@/actions/settings";
-import { Button } from "~/button";
-import { Card, CardContent, CardHeader } from "~/card";
-import { Separator } from "~/separator";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { ModeToggle } from "../ui/theme-toggle";
 

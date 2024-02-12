@@ -11,15 +11,15 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "~/card";
+} from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { Button } from "~/button";
+import { Button } from "@/components/ui/button";
 
-import { Avatar, AvatarFallback, AvatarImage } from "~/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import ShareDrawer from "@/components/share-drawer";
 import ShareDialog from "@/components/share-dialog";
 import useMediaQuery from "@/hooks/useMediaQuery";
-import { HoverCard, HoverCardTrigger, HoverCardContent } from "~/hover-card";
+import { HoverCard, HoverCardTrigger, HoverCardContent } from "@/components/ui/hover-card";
 import { User } from "@prisma/client";
 
 interface PostCardProps {

@@ -14,11 +14,11 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "~/form";
+} from "@/components/ui/form";
 import { CardWrapper } from "./card-wrapper";
 import { LoginSchema } from "@/schemas";
-import { Input } from "~/input";
-import { Button } from "~/button";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
 import { login } from "@/actions/login";

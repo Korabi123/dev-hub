@@ -7,9 +7,9 @@ import {
   DropdownMenuTrigger,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-} from "~/dropdown-menu";
+} from "@/components/ui/dropdown-menu";
 
-import { Avatar, AvatarImage, AvatarFallback } from "~/avatar";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { FaUser, FaUserAlt, FaUserFriends } from "react-icons/fa";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { LogoutButton } from "./logout-button";

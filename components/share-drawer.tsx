@@ -7,7 +7,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "~/drawer";
+} from "@/components/ui/drawer";
 import ShareButtons from "./share-buttons";
 import { Separator } from "./ui/separator";
 import { Input } from "./ui/input";

@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { useParams, useRouter } from "next/navigation";
 import axios from "axios";
 
-import { Button } from "~/button";
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -15,16 +15,16 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "~/form";
-import { Input } from "~/input";
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "~/card";
-import { Textarea } from "~/textarea";
+} from "@/components/ui/card";
+import { Textarea } from "@/components/ui/textarea";
 import ImageUpload from "@/app/(routes)/create/components/image-upload";
 import { Post } from "@prisma/client";
 import { useState } from "react";

@@ -9,7 +9,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "~/card";
+} from "@/components/ui/card";
 import { cn } from "@/lib/utils"
 import { Button } from "./ui/button";
 
