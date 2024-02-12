@@ -19,21 +19,25 @@ export const Header = ({ label }: HeaderProps) => {
   return (
     <div className="w-full flex flex-col gap-y-4 items-center justify-center">
       <div className="flex items-center">
-        {resolvedTheme === "light" ? (
-          <Image src={"/logo-base-256x256.png"} height={40} width={40} alt="logo" />
-        ): (
-          <Image src={"/logo-white-256x256.png"} height={40} width={40} alt="logo" />
-        )}
-        <h1 className={cn(
-          "text-3xl ml-2 font-semibold",
-          font.className,
-        )}>
+        <Image
+          src="/logo-base-256x256.png"
+          alt="DevHub Logo"
+          width={50}
+          height={50}
+          className="block dark:hidden"
+        />
+        <Image
+          src="/logo-white-256x256.png"
+          alt="DevHub Logo"
+          width={50}
+          height={50}
+          className="dark:block hidden"
+        />
+        <h1 className={cn("text-3xl ml-2 font-semibold", font.className)}>
           DevHub
         </h1>
       </div>
-      <p className="text-muted-foreground text-sm">
-        {label}
-      </p>
+      <p className="text-muted-foreground text-sm">{label}</p>
     </div>
-  )
-}
+  );
+};
