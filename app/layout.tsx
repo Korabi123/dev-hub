@@ -15,9 +15,9 @@ export const metadata: Metadata = {
   title: "DevHub | Where Code meets Community",
   description: "Where Code meets Community",
   openGraph: {
-    images: ["https://vercel.com/_next/image?url=%2Fapi%2Fscreenshot%3Fdark%3D1%26deploymentId%3Ddpl_2ZVFWUYofVLMjK3Joa82FV6hiabn%26teamId%3Dkorabii%26withStatus%3D1&w=640&q=75&dpl=dpl_AayBtKsdccKRB3LcwvLKgnQTGHte"],
+    images: ["https://i.ibb.co/f41CrCt/image.png"],
   },
-  metadataBase: new URL("https://vercel.com/_next/image?url=%2Fapi%2Fscreenshot%3Fdark%3D1%26deploymentId%3Ddpl_2ZVFWUYofVLMjK3Joa82FV6hiabn%26teamId%3Dkorabii%26withStatus%3D1&w=640&q=75&dpl=dpl_AayBtKsdccKRB3LcwvLKgnQTGHte")
+  metadataBase: new URL("https://i.ibb.co/f41CrCt/image.png")
 };
 
 export default async function RootLayout({
