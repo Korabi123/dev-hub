@@ -1,4 +1,3 @@
-import { UserRole } from "@prisma/client";
 import * as z from "zod";
 
 export const SettingsSchema = z
@@ -135,6 +134,15 @@ export const ProfileEditSchema = z.object({
   bio: z.optional(z.string().max(200, {
     message: "Bio cannot be longer than 200 characters",
   })),
+});
+
+export const UsernameSchema = z.object({
+  username: z.string().min(1, { message: "Username is required" }).max(8, { message: "Username cannot be longer than 8 characters" }).regex(
+    new RegExp("^[A-Za-z][A-Za-z0-9_]{3,8}$"),
+    {
+      message: "Username must start with a letter and can only contain letters, numbers and underscores",
+    },
+  ),
 })
 
 export const PictureEditSchema = z.object({

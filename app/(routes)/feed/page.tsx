@@ -2,7 +2,6 @@ import { PostCard } from "@/components/post-card";
 import Sidebar from "@/components/sidebar";
 import { fetchPosts } from "@/data/fetch-posts";
 import { getUserById } from "@/data/user";
-import prismadb from "@/lib/prismadb";
 
 const FeedPage = async () => {
   const latestPosts = await fetchPosts();

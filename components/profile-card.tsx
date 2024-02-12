@@ -1,5 +1,3 @@
-// import { auth, clerkClient, useUser } from "@clerk/nextjs";
-
 import { Avatar, AvatarFallback, AvatarImage } from "~/avatar";
 import { Button } from "~/button";
 import {
@@ -18,7 +16,6 @@ import { PostCard } from "./post-card";
 import { FaUser } from "react-icons/fa";
 import { currentUser } from "@/lib/auth";
 import { CgProfile } from "react-icons/cg";
-import { Badge } from "./ui/badge";
 
 const ProfileCard = async () => {
   const user = await currentUser();
