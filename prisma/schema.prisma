@@ -64,7 +64,7 @@ model PasswordResetToken {
   email   String
   token   String      @unique
   expires DateTime
-  
+
   @@unique([email, token])
 }
 
@@ -73,7 +73,7 @@ model TwoFactorToken {
   email   String
   token   String      @unique
   expires DateTime
-  
+
   @@unique([email, token])
 }
 

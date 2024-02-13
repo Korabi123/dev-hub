@@ -11,13 +11,15 @@ import {
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 
-import { Edit } from "lucide-react";
+import {Edit, Frown, PlusIcon, Settings} from "lucide-react";
 import Link from "next/link";
 import prismadb from "@/lib/prismadb";
 import { PostCard } from "./post-card";
 import { FaUser } from "react-icons/fa";
 import { currentUser } from "@/lib/auth";
 import { CgProfile } from "react-icons/cg";
+import {cn} from "@/lib/utils";
+import {usePathname} from "next/navigation";
 
 const ProfileCard = async () => {
   const user = await currentUser();
@@ -125,17 +127,36 @@ const ProfileCard = async () => {
           <Separator className="mt-2 mb-6" />
           <div>
             {latestPostsByUser.length === 0 && (
-              <p className="text-lg text-zinc-400">No posts.</p>
+                <div className="text-center">
+                  <Frown className="mx-auto h-12 w-12 text-gray-400" />
+                  <h3 className="mt-2 text-sm font-semibold text-gray-900">No Posts</h3>
+                  <p className="mt-1 text-sm text-gray-500">Get started by creating your first post.</p>
+                  <div className="mt-6">
+                    <Link href="/create">
+                      <Link href={"/create"}>
+                        <Button
+                            variant={"default"}
+                            className={cn(
+                                "inline-flex items-center",
+                            )}
+                        >
+                          <PlusIcon size={15}/>
+                          <p className="ml-2">Create</p>
+                        </Button>
+                      </Link>
+                    </Link>
+                  </div>
+                </div>
             )}
           </div>
           <div className="grid lg:grid-cols-2 md:grid-cols-1 place-items-center justify-center">
             {latestPostsByUser.map((post) => (
-              <PostCard
-                className="mb-4"
-                key={post.id}
-                data={post}
-                username={user?.username as string}
-              />
+                <PostCard
+                    className="mb-4"
+                    key={post.id}
+                    data={post}
+                    username={user?.username as string}
+                />
             ))}
           </div>
         </CardContent>

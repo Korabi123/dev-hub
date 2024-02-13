@@ -108,8 +108,8 @@ export const RegisterSchema = z.object({
   }),
   username: z.string().min(1, {
     message: "Username is required",
-  }).max(8, {
-    message: "Username cannot be longer than 8 characters",
+  }).max(15, {
+    message: "Username cannot be longer than 15 characters",
   }).regex(
     new RegExp("^[A-Za-z][A-Za-z0-9_]{3,8}$"),
     {
@@ -120,11 +120,11 @@ export const RegisterSchema = z.object({
 
 
 export const ProfileEditSchema = z.object({
-  name: z.optional(z.string().max(11, {
-    message: "Name cannot be longer than 11 characters",
+  name: z.optional(z.string().max(50, {
+    message: "Name cannot be longer than 50 characters",
   })),
-  username: z.optional(z.string().max(8, {
-    message: "Username cannot be longer than 8 characters",
+  username: z.optional(z.string().max(15, {
+    message: "Username cannot be longer than 15 characters",
   }).regex(
     new RegExp("^[A-Za-z][A-Za-z0-9_]{3,8}$"),
     {
