@@ -30,11 +30,12 @@ const useTypingEffect = (
 };
 
 const texts = [
-  "Tired of drowning in a sea of",
-  "searching for programming news/posts?",
+  "Looking to connect with other developers?",
+  "Searching for programming news/posts?",
+  "Stuck in the pits of procrastination?",
   "Say goodbye to this chaos",
-  "and hello to DevHub",
-  "let's go",
+  "...and say hello to DevHub",
+  "↓ Click \"Get Started\" to unlock the next step ↓"
 ];
 
 const TIME_TO_FADE = 300;

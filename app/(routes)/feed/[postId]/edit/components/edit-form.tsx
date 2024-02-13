@@ -27,8 +27,12 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import ImageUpload from "@/app/(routes)/create/components/image-upload";
 import { Post } from "@prisma/client";
-import { useState } from "react";
+import {useEffect, useRef, useState} from "react";
 import { cn } from "@/lib/utils";
+const Editor = dynamic(() => import('@/components/editor/Editor'), { ssr: false })
+import {Loader2} from "lucide-react";
+import dynamic from "next/dynamic";
+import {MDXEditorMethods} from "@mdxeditor/editor";
 
 interface Props {
   data: Post;
@@ -70,18 +74,37 @@ const EditPostForm: React.FC<Props> = ({
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    try {
-      setIsLoading(true);
-      await axios.patch(`/api/edit/${paramsId}`, values);
+    const handleEditorChange = (newValue: string) => {
+        form.setValue('content', newValue, { shouldValidate: true });
+    };
 
-      router.push(`/feed/${paramsId}`);
-      setIsLoading(false);
-      router.refresh();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    const [editorContent, setEditorContent] = useState("");
+    // Declare a reference for the editor
+    const editorRef = useRef<MDXEditorMethods | null>(null);
+
+    // When `editorContent` changes update your form input
+    useEffect(() => {
+        form.setValue("content", editorContent);
+    }, [editorContent]);
+
+    const onSubmit = async (values: z.infer<typeof formSchema>) => {
+        try {
+            setIsLoading(true);
+            const markdownContent = editorRef.current?.getMarkdown();
+
+            if (markdownContent !== undefined) {
+                form.setValue('content', markdownContent, { shouldValidate: true });
+                setIsLoading(true);
+                await axios.patch(`/api/edit/${paramsId}`, values);
+
+                router.push(`/feed/${paramsId}`);
+                setIsLoading(false);
+                router.refresh();
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
   return (
     <div className="flex sm:ml-72 py-20 items-center justify-center">
@@ -115,22 +138,31 @@ const EditPostForm: React.FC<Props> = ({
                 control={form.control}
                 name="content"
                 render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Post Content</FormLabel>
-                    <FormControl>
-                      <Textarea
-                        disabled={isLoading}
-                        placeholder="Forms are an integral part of web development, allowing users to interact with and submit data to a website. Next.js, a popular React framework, provides a seamless way to handle forms while leveraging its server-side rendering capabilities."
-                        {...field}
-                        className="resize-y min-h-[50px]"
-                        rows={20}
-                      />
-                    </FormControl>
-                    <FormDescription>
-                      This is the content that will be displayed in your post.
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
+                    <FormItem>
+                        <FormLabel>Post Content</FormLabel>
+                        <FormControl>
+                            <>
+                                <Textarea
+                                    disabled={isLoading}
+                                    className="hidden"
+                                    placeholder="The post content goes here feel free to use markdown formatting for making the post look better, some markdown formatting tips are: For different headings use; For the biggest heading use a # and then the heading so it would look something like this: # Heading 1 and then go all the way down so; # Heading 1, ## Heading 2, ### Heading 3, #### Heading 4 and finally ##### Heading 5. For code use tripple backtics so; ```code here```. You can also make different types of lists such as: un-ordered lists; * List item, ordered-lists: 1. List item. You can also make text bold; **bold**. And italic *italic*."
+                                    {...field}
+                                    rows={14}
+                                />
+                                {!isLoading ? (
+                                    <Editor onChange={handleEditorChange} editorRef={editorRef} placeholder={'Start writing...'} markdown={data.content}/>
+                                ) : (
+                                    <div className="flex justify-center items-center h-screen">
+                                        <Loader2 className="animate-spin" />
+                                    </div>
+                                )}
+                            </>
+                        </FormControl>
+                        <FormDescription>
+                            This is the content that will be displayed in your post.
+                        </FormDescription>
+                        <FormMessage />
+                    </FormItem>
                 )}
               />
               <FormField
