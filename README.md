@@ -51,3 +51,10 @@ NEXT_PUBLIC_APP_URL=""
 ## Authors
 
 - [@Korabi123](https://www.github.com/Korabi123)
+
+
+## Contributors
+
+<a href="https://github.com/Korabi123/dev-hub/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Korabi123/dev-hub" />
+</a>
