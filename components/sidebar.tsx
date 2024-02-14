@@ -47,6 +47,20 @@ const Sidebar = () => {
         return null;
     }
 
+    let usernameElementMobile;
+    if (user?.username === null || user?.username === undefined) {
+        usernameElementMobile = <Skeleton className="h-4 w-[250px]" />;
+    } else {
+        usernameElementMobile = <p className="text-sm md:text-md text-zinc-400">@{user.username}</p>;
+    }
+
+    let usernameElementDesktop;
+    if (user?.username === null || user?.username === undefined) {
+        usernameElementDesktop = <Skeleton className="h-4 w-[250px]" />;
+    } else {
+        usernameElementDesktop = <p className="text-sm md:text-md text-zinc-400">@{user.username}</p>;
+    }
+
     return (
         <>
             {/* Mobile */}
@@ -83,9 +97,8 @@ const Sidebar = () => {
                                         </div>
                                         <div className="leading-3 select-none">
                                             <p className="text-md md:text-lg">{user.name}</p>
-                                            <p className="text-sm md:text-md text-zinc-400">
-                                                @{user.username}
-                                            </p>
+                                            {usernameElementMobile}
+                                            <Skeleton className="h-4 w-[250px]" />
                                         </div>
 
                                         <div className="py-10 space-y-2">
@@ -155,9 +168,7 @@ const Sidebar = () => {
                             </div>
                             <div className="leading-3 select-none">
                                 <p className="text-md md:text-lg">{user.name}</p>
-                                <p className="text-sm md:text-md text-zinc-400">
-                                    @{user.username}
-                                </p>
+                                {usernameElementDesktop}
                             </div>
                             <div className="py-10 space-y-2">
                                 {routes.map((route) => (
