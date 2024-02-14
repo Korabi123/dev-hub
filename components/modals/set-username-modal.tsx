@@ -81,7 +81,7 @@ export function SetUsernameModel() {
             <Avatar>
               <AvatarImage src={user?.image} />
             </Avatar>
-            <p className="text-sm">test.email@gmail.com</p>
+            <p className="text-sm">{user?.email}</p>
           </div>
         </div>
         <form onSubmit={form.handleSubmit(onSubmit)}>
