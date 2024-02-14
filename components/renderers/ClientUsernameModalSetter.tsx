@@ -1,15 +1,20 @@
-'use client'
-import React from 'react';
-import {useModal} from "@/hooks/use-modal-store";
+"use client";
+import React from "react";
+import { useModal } from "@/hooks/use-modal-store";
+import { useCurrentUser } from "@/hooks/use-current-user";
 
 function ClientUsernameModalSetter() {
-    const { onOpen } = useModal();
+  const { onOpen } = useModal();
 
-    React.useEffect(() => {
-        onOpen("set-username");
-    }, [onOpen]);
+  const user = useCurrentUser();
 
-    return null;
+  React.useEffect(() => {
+    if (user) {
+      onOpen("set-username");
+    }
+  }, [onOpen]);
+
+  return null;
 }
 
 export default ClientUsernameModalSetter;
