@@ -136,8 +136,19 @@ export const ProfileEditSchema = z.object({
   })),
 });
 
+export const UsernameSetSchema = z.object({
+    username: z.string().max(15, {
+        message: "Username cannot be longer than 15 characters",
+    }).regex(
+        new RegExp("^[A-Za-z][A-Za-z0-9_]*$"),
+        {
+            message: "Username must start with a letter and can only contain letters, numbers and underscores",
+        },
+    ),
+});
+
 export const UsernameSchema = z.object({
-  username: z.string().min(1, { message: "Username is required" }).max(8, { message: "Username cannot be longer than 8 characters" }).regex(
+  username: z.string().min(1, { message: "Username is required" }).max(15, { message: "Username cannot be longer than 15 characters" }).regex(
     new RegExp("^[A-Za-z][A-Za-z0-9_]{3,8}$"),
     {
       message: "Username must start with a letter and can only contain letters, numbers and underscores",
