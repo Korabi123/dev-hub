@@ -12,6 +12,8 @@ import React from "react";
 import ClientUsernameModalSetter from "@/components/renderers/ClientUsernameModalSetter";
 import { ModalProvider } from "@/components/providers/modal-provider";
 import { ConfettiProvider } from "@/components/providers/confetti-provider";
+import { ThemeProvider } from "@/components/theme-provider";
+import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -44,11 +46,17 @@ export default async function RootLayout({
           content="lekmOW1tN9N3gVV3pCGAkjlhp8sa54hIhE1vUkSBIoE"
         />
         <GoogleAnalytics GA_MEASUREMENT_ID="G-6VC7BPJ148" />
-        <body className={inter.className}>
+        <body className={cn("", inter.className)}>
           {showUsernameModal && <ClientUsernameModalSetter />}
           <ModalProvider />
           <ConfettiProvider />
-          {children}
+          <ThemeProvider
+            defaultTheme="light"
+            attribute="class"
+            enableSystem={false}
+          >
+            {children}
+          </ThemeProvider>
           <Analytics />
           <SpeedInsights />
         </body>

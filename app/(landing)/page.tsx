@@ -1,84 +1,130 @@
-import Navbar from "@/components/navbar";
-
-import { TextTypingEffect } from "@/components/text-typewriter";
-import { ButtonFlickeringLight } from "@/components/special-button";
-import { ChevronsLeftRight, Globe } from "lucide-react";
-import { CardSpotlight } from "@/components/card-spotlight";
-import { currentUser } from "@/lib/auth";
+import { cva } from "class-variance-authority";
+import type { LucideIcon } from "lucide-react";
+import {
+  BatteryChargingIcon,
+  GithubIcon,
+  LayoutIcon,
+  MessageCircleIcon,
+  PersonStandingIcon,
+  RocketIcon,
+  StarsIcon,
+  TimerIcon,
+} from "lucide-react";
 import Link from "next/link";
+import type { HTMLAttributes, ReactNode } from "react";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
+import { CreateAppAnimation, Previews, Rain } from "./page.client";
+import {
+  EarthIcon,
+} from "./icons";
+import Navbar from "@/components/navbar";
+import { currentUser } from "@/lib/auth";
+import { MovingCards } from "@/components/moving-cards";
 import Image from "next/image";
-import { WavyBackground } from "@/components/wavy-background";
 
-export default async function Home() {
+export default async function HomePage() {
   const user = await currentUser();
-
-  const priorities = [
-    {
-      title: "Share with the world",
-      description:
-        "Turn your posts to valuable resources. Share your knowlege to the world",
-      icon: <Globe className="h-6 w-6 text-center" />,
-      id: 1,
-    },
-    {
-      title: "Developer Profiles",
-      description:
-        "Comprehensive profiles showcasing skills, projects, and contributions.",
-      icon: <ChevronsLeftRight className="h-6 w-6 text-center" />,
-      id: 2,
-    },
-  ];
 
   return (
     <>
       <Navbar />
-
-      <main className="justify-center px-6 pb-32 relative">
-        <div className="h-full dark:hidden block justify-center mt-14">
-          <WavyBackground className="max-w-4xl mx-auto pb-36">
-            <h1 className="text-4xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-gray-700 via-gray-900 to-black text-center ">
-              Your <em className="italic relative inline-flex justify-center items-center text-transparent bg-clip-text bg-gradient-to-b from-gray-700 via-gray-900 to-black px-2"> Ultimate
-              <svg className="absolute fill-pink-300/35 w-[calc(100%+1.5rem)] -z-10" xmlns="http://www.w3.org/2000/svg" width="230" height="62" viewBox="0 0 223 62" aria-hidden="true" preserveAspectRatio="none">
-                <path d="M45.654 53.62c17.666 3.154 35.622 4.512 53.558 4.837 17.94.288 35.91-.468 53.702-2.54 8.89-1.062 17.742-2.442 26.455-4.352 8.684-1.945 17.338-4.3 25.303-7.905 3.94-1.81 7.79-3.962 10.634-6.777 1.38-1.41 2.424-2.994 2.758-4.561.358-1.563-.078-3.143-1.046-4.677-.986-1.524-2.43-2.96-4.114-4.175a37.926 37.926 0 0 0-5.422-3.32c-3.84-1.977-7.958-3.563-12.156-4.933-8.42-2.707-17.148-4.653-25.95-6.145-8.802-1.52-17.702-2.56-26.622-3.333-17.852-1.49-35.826-1.776-53.739-.978-8.953.433-17.898 1.125-26.79 2.22-8.887 1.095-17.738 2.541-26.428 4.616-4.342 1.037-8.648 2.226-12.853 3.676-4.197 1.455-8.314 3.16-12.104 5.363-1.862 1.13-3.706 2.333-5.218 3.829-1.52 1.47-2.79 3.193-3.285 5.113-.528 1.912-.127 3.965.951 5.743 1.07 1.785 2.632 3.335 4.348 4.68 2.135 1.652 3.2 2.672 2.986 3.083-.18.362-1.674.114-4.08-1.638-1.863-1.387-3.63-3.014-4.95-5.09C.94 35.316.424 34.148.171 32.89c-.275-1.253-.198-2.579.069-3.822.588-2.515 2.098-4.582 3.76-6.276 1.673-1.724 3.612-3.053 5.57-4.303 3.96-2.426 8.177-4.278 12.457-5.868 4.287-1.584 8.654-2.89 13.054-4.036 8.801-2.292 17.74-3.925 26.716-5.19C70.777 2.131 79.805 1.286 88.846.723c18.087-1.065 36.236-.974 54.325.397 9.041.717 18.07 1.714 27.042 3.225 8.972 1.485 17.895 3.444 26.649 6.253 4.37 1.426 8.697 3.083 12.878 5.243a42.11 42.11 0 0 1 6.094 3.762c1.954 1.44 3.823 3.2 5.283 5.485a12.515 12.515 0 0 1 1.63 3.88c.164.706.184 1.463.253 2.193-.063.73-.094 1.485-.247 2.195-.652 2.886-2.325 5.141-4.09 6.934-3.635 3.533-7.853 5.751-12.083 7.688-8.519 3.778-17.394 6.09-26.296 7.998-8.917 1.86-17.913 3.152-26.928 4.104-18.039 1.851-36.17 2.295-54.239 1.622-18.062-.713-36.112-2.535-53.824-6.23-5.941-1.31-5.217-2.91.361-1.852" />
-              </svg>
-              <svg className="absolute sm:block hidden -rotate-[3deg] fill-pink-300/35 w-[calc(100%+1.5rem)] -z-10" xmlns="http://www.w3.org/2000/svg" width="230" height="62" viewBox="0 0 223 62" aria-hidden="true" preserveAspectRatio="none">
-                <path d="M45.654 53.62c17.666 3.154 35.622 4.512 53.558 4.837 17.94.288 35.91-.468 53.702-2.54 8.89-1.062 17.742-2.442 26.455-4.352 8.684-1.945 17.338-4.3 25.303-7.905 3.94-1.81 7.79-3.962 10.634-6.777 1.38-1.41 2.424-2.994 2.758-4.561.358-1.563-.078-3.143-1.046-4.677-.986-1.524-2.43-2.96-4.114-4.175a37.926 37.926 0 0 0-5.422-3.32c-3.84-1.977-7.958-3.563-12.156-4.933-8.42-2.707-17.148-4.653-25.95-6.145-8.802-1.52-17.702-2.56-26.622-3.333-17.852-1.49-35.826-1.776-53.739-.978-8.953.433-17.898 1.125-26.79 2.22-8.887 1.095-17.738 2.541-26.428 4.616-4.342 1.037-8.648 2.226-12.853 3.676-4.197 1.455-8.314 3.16-12.104 5.363-1.862 1.13-3.706 2.333-5.218 3.829-1.52 1.47-2.79 3.193-3.285 5.113-.528 1.912-.127 3.965.951 5.743 1.07 1.785 2.632 3.335 4.348 4.68 2.135 1.652 3.2 2.672 2.986 3.083-.18.362-1.674.114-4.08-1.638-1.863-1.387-3.63-3.014-4.95-5.09C.94 35.316.424 34.148.171 32.89c-.275-1.253-.198-2.579.069-3.822.588-2.515 2.098-4.582 3.76-6.276 1.673-1.724 3.612-3.053 5.57-4.303 3.96-2.426 8.177-4.278 12.457-5.868 4.287-1.584 8.654-2.89 13.054-4.036 8.801-2.292 17.74-3.925 26.716-5.19C70.777 2.131 79.805 1.286 88.846.723c18.087-1.065 36.236-.974 54.325.397 9.041.717 18.07 1.714 27.042 3.225 8.972 1.485 17.895 3.444 26.649 6.253 4.37 1.426 8.697 3.083 12.878 5.243a42.11 42.11 0 0 1 6.094 3.762c1.954 1.44 3.823 3.2 5.283 5.485a12.515 12.515 0 0 1 1.63 3.88c.164.706.184 1.463.253 2.193-.063.73-.094 1.485-.247 2.195-.652 2.886-2.325 5.141-4.09 6.934-3.635 3.533-7.853 5.751-12.083 7.688-8.519 3.778-17.394 6.09-26.296 7.998-8.917 1.86-17.913 3.152-26.928 4.104-18.039 1.851-36.17 2.295-54.239 1.622-18.062-.713-36.112-2.535-53.824-6.23-5.941-1.31-5.217-2.91.361-1.852" />
-              </svg>
-              <svg className="absolute sm:block hidden -rotate-[183deg] fill-pink-300/35 w-[calc(100%+1.5rem)] -z-10" xmlns="http://www.w3.org/2000/svg" width="230" height="62" viewBox="0 0 223 62" aria-hidden="true" preserveAspectRatio="none">
-                <path d="M45.654 53.62c17.666 3.154 35.622 4.512 53.558 4.837 17.94.288 35.91-.468 53.702-2.54 8.89-1.062 17.742-2.442 26.455-4.352 8.684-1.945 17.338-4.3 25.303-7.905 3.94-1.81 7.79-3.962 10.634-6.777 1.38-1.41 2.424-2.994 2.758-4.561.358-1.563-.078-3.143-1.046-4.677-.986-1.524-2.43-2.96-4.114-4.175a37.926 37.926 0 0 0-5.422-3.32c-3.84-1.977-7.958-3.563-12.156-4.933-8.42-2.707-17.148-4.653-25.95-6.145-8.802-1.52-17.702-2.56-26.622-3.333-17.852-1.49-35.826-1.776-53.739-.978-8.953.433-17.898 1.125-26.79 2.22-8.887 1.095-17.738 2.541-26.428 4.616-4.342 1.037-8.648 2.226-12.853 3.676-4.197 1.455-8.314 3.16-12.104 5.363-1.862 1.13-3.706 2.333-5.218 3.829-1.52 1.47-2.79 3.193-3.285 5.113-.528 1.912-.127 3.965.951 5.743 1.07 1.785 2.632 3.335 4.348 4.68 2.135 1.652 3.2 2.672 2.986 3.083-.18.362-1.674.114-4.08-1.638-1.863-1.387-3.63-3.014-4.95-5.09C.94 35.316.424 34.148.171 32.89c-.275-1.253-.198-2.579.069-3.822.588-2.515 2.098-4.582 3.76-6.276 1.673-1.724 3.612-3.053 5.57-4.303 3.96-2.426 8.177-4.278 12.457-5.868 4.287-1.584 8.654-2.89 13.054-4.036 8.801-2.292 17.74-3.925 26.716-5.19C70.777 2.131 79.805 1.286 88.846.723c18.087-1.065 36.236-.974 54.325.397 9.041.717 18.07 1.714 27.042 3.225 8.972 1.485 17.895 3.444 26.649 6.253 4.37 1.426 8.697 3.083 12.878 5.243a42.11 42.11 0 0 1 6.094 3.762c1.954 1.44 3.823 3.2 5.283 5.485a12.515 12.515 0 0 1 1.63 3.88c.164.706.184 1.463.253 2.193-.063.73-.094 1.485-.247 2.195-.652 2.886-2.325 5.141-4.09 6.934-3.635 3.533-7.853 5.751-12.083 7.688-8.519 3.778-17.394 6.09-26.296 7.998-8.917 1.86-17.913 3.152-26.928 4.104-18.039 1.851-36.17 2.295-54.239 1.622-18.062-.713-36.112-2.535-53.824-6.23-5.941-1.31-5.217-2.91.361-1.852" />
-              </svg>
-            </em> <br /> Dev Connection.
-            </h1>
-            <div className="mt-4 font-normal md:text-lg text-sm text-neutral-300 max-w-lg text-center mx-auto">
-              <TextTypingEffect />
-              <div className="mt-10">
-                <ButtonFlickeringLight mode={!user ? "register" : "feed"} />
+      <div
+        className="absolute inset-x-0 top-[200px] h-[250px] max-md:hidden"
+        style={{
+          background:
+            "repeating-linear-gradient(to right, hsl(var(--border)), transparent 1px, transparent 50px), repeating-linear-gradient(to bottom, hsl(var(--border)), transparent 1px, transparent 50px)",
+        }}
+      />
+      <main className="container mb-[80px] top-[70px] relative max-w-[1100px] px-2 py-4 lg:py-16">
+        <div
+          style={{
+            background:
+              "repeating-linear-gradient(to bottom, transparent, hsl(var(--secondary)/.2) 500px, transparent 1000px)",
+          }}
+        >
+          <div className="relative">
+            <StarsIcon
+              className="absolute -left-2 -top-2 z-10 size-4 xl:scale-[200%]"
+              stroke="none"
+              fill="currentColor"
+            />
+            <StarsIcon
+              className="absolute -bottom-2 -right-2 z-10 size-4 xl:scale-[200%]"
+              stroke="none"
+              fill="currentColor"
+            />
+            <Hero />
+          </div>
+          <div className="container border-x border-t py-24">
+            <h2 className="text-center text-2xl font-semibold sm:text-3xl">
+              Start instantly.
+              <br />
+              Browse through trending topics.
+            </h2>
+          </div>
+          <Highlights />
+          <div className="container relative overflow-hidden border-x border-t py-16 sm:py-32">
+            <h2 className="text-center text-2xl font-semibold sm:text-3xl">
+              For Programmers.
+              <br />
+              Made by Programmers.
+            </h2>
+            <Rain
+              width={1000}
+              height={500}
+              className="absolute inset-0 z-[-1] h-full w-full mix-blend-difference"
+            />
+          </div>
+          <Features />
+          <div className="grid grid-cols-1 border-b border-r md:grid-cols-2 lg:grid-cols-3">
+            <div className="relative flex flex-col overflow-hidden border-l border-t px-8 py-14">
+              <Rain
+                width={500}
+                height={1000}
+                className="absolute inset-0 z-[-1] mix-blend-difference"
+              />
+              <h2 className="text-3xl font-bold">
+                Get started now.
+              </h2>
+              <ul className="my-8 flex flex-col gap-6">
+                <li>
+                  <span className="font-medium">
+                    <BatteryChargingIcon className="inline" /> Battery
+                    guaranteed.
+                  </span>
+                  <span className="ml-2 text-muted-foreground">
+                    Actively maintained, open for contributions.
+                  </span>
+                </li>
+                <li>
+                  <span className="font-medium">
+                    <GithubIcon className="inline" /> Fully open-source.
+                  </span>
+                  <span className="ml-2 text-muted-foreground">
+                    Open source, available on Github.
+                  </span>
+                </li>
+                <li>
+                  <span className="font-medium">
+                    <TimerIcon className="inline" /> Within seconds.
+                  </span>
+                  <span className="ml-2 text-muted-foreground">
+                    Get started within seconds.
+                  </span>
+                </li>
+              </ul>
+              <div className="w-full">
+                <Link href={!user ? "/auth/register" : "/feed"} className={cn(buttonVariants(), "w-full")}>
+                  Get Started
+                </Link>
               </div>
             </div>
-          </WavyBackground>
-        </div>
-
-        <section id="about" className="mt-36 xl:px-96 lg:px-60">
-          <div className="text-center">
-            <h2 className="scroll-m-20 text-3xl md:text-4xl font-bold tracking-tight first:mt-0">
-              What we offer
-            </h2>
-            <p className="leading-7 text-xl [&:not(:first-child)]:mt-3 text-zinc-400">
-              List of features we offer and our priorities.
-            </p>
-            <div className="grid mt-20 place-items-center gap-x-10 lg:grid-cols-2 grid-cols-1 gap-4 mb-4">
-              {priorities.map((priority) => (
-                <CardSpotlight
-                  title={priority.title}
-                  icon={priority.icon}
-                  description={priority.description}
-                  key={priority.id}
-                />
-              ))}
-            </div>
+            <Integration className="border-t lg:col-span-2" />
           </div>
-        </section>
+        </div>
       </main>
+
       <footer className="w-full border-t justify-center">
         <div className="container flex flex-col py-4 gap-4 px-4 items-center justify-center text-center md:flex-row md:gap-6 md:px-6 lg:py-8 xl:max-w-6xl xl:gap-8 xl:justify-between">
           <div className="flex flex-col gap-2 text-sm md:items-center md:gap-4 md:order-1 md:text-base lg:order-0">
@@ -101,15 +147,231 @@ export default async function Home() {
               alt="DevHub Logo"
               width={50}
               height={50}
+              className="block dark:hidden"
+            />
+            <Image
+              src="/logo-white-1200x1200.png"
+              alt="DevHub Logo"
+              width={50}
+              height={50}
+              className="dark:block hidden"
             />
           </div>
           <div className="flex flex-col gap-2 text-sm md:items-center md:gap-4 md:order-1 md:text-base lg:order-0">
-            <p className="text-gray-500 dark:text-gray-400">
-              © 2024 DevHub Inc.
-            </p>
+            <p className="text-gray-500 dark:text-gray-400">© 2024 DevHub Inc.</p>
           </div>
         </div>
       </footer>
+
     </>
+  );
+}
+
+function Integration({
+  className,
+  ...props
+}: HTMLAttributes<HTMLDivElement>): JSX.Element {
+  return (
+    <div
+      className={cn(
+        "relative grid grid-cols-1 *:border-l *:border-t *:p-6 lg:grid-cols-3",
+        className
+      )}
+      {...props}
+    >
+      <div className="col-span-full h-[200px] overflow-hidden bg-gradient-to-b from-primary/10">
+        <div
+          className="mx-auto h-[500px] w-[500px] rounded-full"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 0% 100%, transparent 60%, hsl(var(--primary)))",
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+
+function Highlights(): JSX.Element {
+  return (
+    <div className="grid grid-cols-1 border-r md:grid-cols-2 lg:grid-cols-3">
+      <Highlight icon={RocketIcon} heading="Light and Fast.">
+        Full powered application with Next.js App Router.
+      </Highlight>
+      <Highlight icon={LayoutIcon} heading="Accessibility & UX first.">
+        An easy-to-use platform with great accessibility and a simple, intuitive interface.
+      </Highlight>
+      <Highlight icon={PersonStandingIcon} heading="Profile Personalization.">
+        Craft and set up your distinctive and fully customizable In-App Identity.
+      </Highlight>
+      <div className="col-span-full flex flex-col items-center border-l border-t px-6 py-12 text-center">
+        <h3 className="text-2xl font-bold">Share With the World.</h3>
+        <p className="mb-2 text-muted-foreground">
+          Effortlessly share to the global community, simplifying the process of sharing your posts with ease.
+        </p>
+
+        <div
+          className="mt-14 w-full"
+          style={{
+            backgroundImage: [
+              "repeating-linear-gradient(to right,hsl(var(--primary)/.1),hsl(var(--primary)/.1) 1px,transparent 1px,transparent 40px)",
+              "repeating-linear-gradient(to bottom,hsl(var(--primary)/.1),hsl(var(--primary)/.1) 1px,transparent 1px,transparent 40px)",
+            ].join(","),
+          }}
+        >
+          <EarthIcon className="-my-8 mx-auto h-auto w-60" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Highlight({
+  icon: Icon,
+  heading,
+  children,
+}: {
+  icon: LucideIcon;
+  heading: ReactNode;
+  children: ReactNode;
+}): JSX.Element {
+  return (
+    <div className="border-l border-t px-6 py-12">
+      <div className="mb-4 flex flex-row items-center gap-2 text-muted-foreground">
+        <Icon className="size-4" />
+        <h2 className="text-sm font-medium">{heading}</h2>
+      </div>
+      <span className="font-medium">{children}</span>
+    </div>
+  );
+}
+
+async function Hero() {
+  const user = await currentUser();
+
+  return (
+    <div className="container relative z-[2] flex flex-col items-center overflow-hidden border-x border-t bg-background px-6 pt-12 text-center md:pt-20">
+      <h1 className="mb-6 text-4xl font-semibold md:text-5xl">
+        Connect With Developers.
+      </h1>
+      <p className="mb-6 h-fit p-2 text-muted-foreground md:max-w-[80%] md:text-xl">
+        DevHub is the platform for connecting with{" "}
+        <b className="font-medium text-foreground">
+          other Developers around the World
+        </b>
+        . Your ultimate destination for code exploration, DevHub transforms the
+        way developers connect, code, and conquer challenges together.
+      </p>
+      <div className="inline-flex items-center gap-3">
+        <Link
+          href={!user ? "/auth/register" : "/feed"}
+          className={cn(
+            buttonVariants({ size: "lg", className: "rounded-full" })
+          )}
+        >
+          Get Started
+        </Link>
+        {!user ? (
+          <a
+            href="/auth/login"
+            className={cn(
+              buttonVariants({
+                size: "lg",
+                variant: "outline",
+                className: "rounded-full bg-background",
+              })
+            )}
+          >
+            Log In
+          </a>
+        ) : null}
+      </div>
+      <div
+        className="mb-[-150px] mt-16 size-[300px] rounded-full bg-background md:mb-[-250px] md:size-[500px]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 80% 0%, transparent 40%, hsl(var(--primary)))",
+        }}
+      />
+      <div
+        className="absolute inset-0 z-[-1] duration-1000 animate-in fade-in"
+        style={{
+          backgroundImage: [
+            "radial-gradient(ellipse at top, transparent 60%, hsl(var(--primary) / 0.2))",
+            "linear-gradient(to bottom, transparent 30%, hsl(var(--primary) / 0.2))",
+            "linear-gradient(to bottom, hsl(var(--background)) 40%, transparent)",
+            "repeating-linear-gradient(45deg, transparent,transparent 60px, hsl(var(--primary)) 61px, transparent 62px)",
+          ].join(", "),
+        }}
+      />
+    </div>
+  );
+}
+
+function Features(): JSX.Element {
+  const testimonials = [
+    {
+      content: "This looks so clean, love it!",
+      name: "@_lic",
+    },
+    {
+      content: "Nice, simple and sleek. I like it!",
+      name: "@pfara",
+    },
+    {
+      content: "I love it! It's clean and simple while still uses best practices, looks great and has great functionality!",
+      name: "Annonymous",
+    },
+    {
+      content: "The website is so clean and good. Surprising that it was just made by one person.",
+      name: "@avinashboi",
+    }
+  ]
+
+  return (
+    <div className="border-r text-center">
+      <Feature
+        icon={MessageCircleIcon}
+        subheading="Loved by developers"
+        heading="Heard of our users."
+        description="We are making it better."
+      >
+        <MovingCards
+          items={testimonials}
+          direction="left"
+          speed="fast"
+        />
+      </Feature>
+    </div>
+  );
+}
+
+function Feature({
+  className,
+  icon: Icon,
+  heading,
+  subheading,
+  description,
+  ...props
+}: HTMLAttributes<HTMLDivElement> & {
+  icon: LucideIcon;
+  subheading: ReactNode;
+  heading: ReactNode;
+  description: ReactNode;
+}): JSX.Element {
+  return (
+    <div
+      className={cn("border-l border-t px-6 py-12 md:py-16", className)}
+      {...props}
+    >
+      <div className="mb-4 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground">
+        <Icon className="size-4" />
+        <p>{subheading}</p>
+      </div>
+      <h2 className="mb-2 text-lg font-semibold">{heading}</h2>
+      <p className="text-muted-foreground">{description}</p>
+
+      {props.children}
+    </div>
   );
 }

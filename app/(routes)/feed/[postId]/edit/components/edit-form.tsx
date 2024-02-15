@@ -27,12 +27,16 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import ImageUpload from "@/app/(routes)/create/components/image-upload";
 import { Post } from "@prisma/client";
-import {useEffect, useRef, useState} from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-const Editor = dynamic(() => import('@/components/editor/Editor'), { ssr: false })
-import {Loader2} from "lucide-react";
+const Editor = dynamic(() => import("@/components/editor/Editor"), {
+  ssr: false,
+});
+import { Bold, Heading1, Heading2, Heading3, Italic, Loader2 } from "lucide-react";
 import dynamic from "next/dynamic";
-import {MDXEditorMethods} from "@mdxeditor/editor";
+import { MDXEditorMethods } from "@mdxeditor/editor";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { ListBulletIcon } from "@radix-ui/react-icons";
 
 interface Props {
   data: Post;
@@ -58,10 +62,7 @@ const formSchema = z.object({
 
 export const revalidate = 0;
 
-const EditPostForm: React.FC<Props> = ({
-  data,
-  paramsId,
-}) => {
+const EditPostForm: React.FC<Props> = ({ data, paramsId }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
@@ -74,45 +75,26 @@ const EditPostForm: React.FC<Props> = ({
     },
   });
 
-    const handleEditorChange = (newValue: string) => {
-        form.setValue('content', newValue, { shouldValidate: true });
-    };
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    try {
+      setIsLoading(true);
 
-    const [editorContent, setEditorContent] = useState("");
-    // Declare a reference for the editor
-    const editorRef = useRef<MDXEditorMethods | null>(null);
+      setIsLoading(true);
+      await axios.patch(`/api/edit/${paramsId}`, values);
 
-    // When `editorContent` changes update your form input
-    useEffect(() => {
-        form.setValue("content", editorContent);
-    }, [editorContent]);
-
-    const onSubmit = async (values: z.infer<typeof formSchema>) => {
-        try {
-            setIsLoading(true);
-            const markdownContent = editorRef.current?.getMarkdown();
-
-            if (markdownContent !== undefined) {
-                form.setValue('content', markdownContent, { shouldValidate: true });
-                setIsLoading(true);
-                await axios.patch(`/api/edit/${paramsId}`, values);
-
-                router.push(`/feed/${paramsId}`);
-                setIsLoading(false);
-                router.refresh();
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    };
+      router.push(`/feed/${paramsId}`);
+      setIsLoading(false);
+      router.refresh();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="flex sm:ml-72 py-20 items-center justify-center">
       <Card className="lg:w-[800px] md:w-[500px] w-full select-none">
         <CardHeader>
-          <CardTitle className="font-bold tracking-tight">
-            Edit Post
-          </CardTitle>
+          <CardTitle className="font-bold tracking-tight">Edit Post</CardTitle>
           <CardDescription>Edit your public post.</CardDescription>
         </CardHeader>
         <CardContent>
@@ -125,7 +107,11 @@ const EditPostForm: React.FC<Props> = ({
                   <FormItem>
                     <FormLabel>Title</FormLabel>
                     <FormControl>
-                      <Input disabled={isLoading} placeholder="Forms In NextJS 14" {...field} />
+                      <Input
+                        disabled={isLoading}
+                        placeholder="Forms In NextJS 14"
+                        {...field}
+                      />
                     </FormControl>
                     <FormDescription>
                       This is the title that will be displayed in your post.
@@ -138,31 +124,91 @@ const EditPostForm: React.FC<Props> = ({
                 control={form.control}
                 name="content"
                 render={({ field }) => (
-                    <FormItem>
-                        <FormLabel>Post Content</FormLabel>
-                        <FormControl>
-                            <>
-                                <Textarea
-                                    disabled={isLoading}
-                                    className="hidden"
-                                    placeholder="The post content goes here feel free to use markdown formatting for making the post look better, some markdown formatting tips are: For different headings use; For the biggest heading use a # and then the heading so it would look something like this: # Heading 1 and then go all the way down so; # Heading 1, ## Heading 2, ### Heading 3, #### Heading 4 and finally ##### Heading 5. For code use tripple backtics so; ```code here```. You can also make different types of lists such as: un-ordered lists; * List item, ordered-lists: 1. List item. You can also make text bold; **bold**. And italic *italic*."
-                                    {...field}
-                                    rows={14}
-                                />
-                                {!isLoading ? (
-                                    <Editor onChange={handleEditorChange} editorRef={editorRef} placeholder={'Start writing...'} markdown={data.content}/>
-                                ) : (
-                                    <div className="flex justify-center items-center h-screen">
-                                        <Loader2 className="animate-spin" />
-                                    </div>
-                                )}
-                            </>
-                        </FormControl>
-                        <FormDescription>
-                            This is the content that will be displayed in your post.
-                        </FormDescription>
-                        <FormMessage />
-                    </FormItem>
+                  <FormItem>
+                    <FormLabel>Post Content</FormLabel>
+                    <FormControl>
+                      <>
+                        <div className="flex space-x-4">
+                          <ToggleGroup type="multiple">
+                            <Button
+                              type="button"
+                              size={"sm"}
+                              variant={"outline"}
+                              onClick={() => form.setValue("content", `${field.value} # `)}
+                              value="heading 1"
+                              aria-label="Toggle Heading 1"
+                            >
+                              <Heading1 className="h-4 w-4" />
+                            </Button>
+                            <Button
+                              type="button"
+                              size={"sm"}
+                              variant={"outline"}
+                              onClick={() => form.setValue("content", `${field.value} ## `)}
+                              value="heading 2"
+                              aria-label="Toggle Heading 2"
+                            >
+                              <Heading2 className="h-4 w-4" />
+                            </Button>
+                            <Button
+                              type="button"
+                              size={"sm"}
+                              variant={"outline"}
+                              onClick={() => form.setValue("content", `${field.value} ### `)}
+                              value="heading 3"
+                              aria-label="Toggle Heading 3"
+                            >
+                              <Heading3 className="h-4 w-4" />
+                            </Button>
+                          </ToggleGroup>
+                          <ToggleGroup type="single">
+                            <Button
+                              type="button"
+                              size={"sm"}
+                              variant={"outline"}
+                              onClick={() => form.setValue("content", `${field.value} - `)}
+                              value="bullet list"
+                              aria-label="Toggle Bullet list"
+                            >
+                              <ListBulletIcon className="h-4 w-4" />
+                            </Button>
+                          </ToggleGroup>
+                          <ToggleGroup type="multiple">
+                            <ToggleGroupItem
+                              className="border"
+                              onClick={() =>
+                                form.setValue("content", `${field.value}**`)
+                              }
+                              value="bold"
+                              aria-label="Toggle Bold Text"
+                            >
+                              <Bold className="h-4 w-4" />
+                            </ToggleGroupItem>
+                            <ToggleGroupItem
+                              className="border"
+                              onClick={() =>
+                                form.setValue("content", `${field.value}*`)
+                              }
+                              value="italic"
+                              aria-label="Toggle Italic Text"
+                            >
+                              <Italic className="h-4 w-4" />
+                            </ToggleGroupItem>
+                          </ToggleGroup>
+                        </div>
+                        <Textarea
+                          disabled={isLoading}
+                          placeholder="Start typing..."
+                          {...field}
+                          value={field.value}
+                        />
+                      </>
+                    </FormControl>
+                    <FormDescription>
+                      This is the content that will be displayed in your post.
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
                 )}
               />
               <FormField
@@ -186,7 +232,16 @@ const EditPostForm: React.FC<Props> = ({
                   </FormItem>
                 )}
               />
-              <Button disabled={isLoading} className={cn("w-full", isLoading ? "bg-opacity-80 cursor-not-allowed" : "")} type="submit">Update</Button>
+              <Button
+                disabled={isLoading}
+                className={cn(
+                  "w-full",
+                  isLoading ? "bg-opacity-80 cursor-not-allowed" : ""
+                )}
+                type="submit"
+              >
+                Update
+              </Button>
             </form>
           </Form>
         </CardContent>

@@ -5,11 +5,12 @@ import prismadb from "@/lib/prismadb";
 import { PostCard } from "@/components/post-card";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Edit } from "lucide-react";
+import { Edit, Frown, PlusIcon } from "lucide-react";
 import { CgProfile } from "react-icons/cg";
 import { User } from "@prisma/client";
 import { FaUser } from "react-icons/fa";
 import { currentUser } from "@/lib/auth";
+import { cn } from "@/lib/utils";
 
 interface ProfileCardProps {
   profileId: string;
@@ -119,7 +120,15 @@ const ProfileCard: React.FC<ProfileCardProps> = async ({ profileId, user }) => {
           <Separator className="mt-2 mb-6" />
           <div>
             {latestPostsByUser.length === 0 && (
-              <p className="text-lg text-zinc-400">No posts.</p>
+              <div className="text-center">
+                <Frown className="mx-auto h-12 w-12 text-gray-400" />
+                <h3 className="mt-2 text-sm font-semibold text-gray-900">
+                  No Posts
+                </h3>
+                <p className="mt-1 text-sm text-gray-500">
+                  This user has not created a post yet.
+                </p>
+              </div>
             )}
           </div>
           <div className="grid lg:grid-cols-2 md:grid-cols-1 place-items-center justify-center">
