@@ -1,4 +1,3 @@
-import { cva } from "class-variance-authority";
 import type { LucideIcon } from "lucide-react";
 import {
   BatteryChargingIcon,
@@ -14,7 +13,7 @@ import Link from "next/link";
 import type { HTMLAttributes, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
-import { CreateAppAnimation, Previews, Rain } from "./page.client";
+import { Rain } from "./page.client";
 import {
   EarthIcon,
 } from "./icons";
