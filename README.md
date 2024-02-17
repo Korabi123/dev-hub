@@ -2,7 +2,7 @@
 # DevHub - Ultimate Dev Connection (2024)
 
 
-![Logo](https://vercel.com/_next/image?url=%2Fapi%2Fscreenshot%3Fdark%3D1%26deploymentId%3Ddpl_2ZVFWUYofVLMjK3Joa82FV6hiabn%26teamId%3Dkorabii%26withStatus%3D1&w=640&q=75&dpl=dpl_AayBtKsdccKRB3LcwvLKgnQTGHte)
+![Logo](https://vercel.com/_next/image?url=%2Fapi%2Fscreenshot%3Fdark%3D1%26deploymentId%3Ddpl_2QkAA3rTd4nnHYxwAuBXBC4WrqXe%26teamId%3Dkorabii%26withStatus%3D1&w=640&q=75&dpl=dpl_ESWnbu2Sy3Eg8Lr8SoYrk1oyYSJS)
 
 
 ## Features
