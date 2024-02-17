@@ -324,6 +324,10 @@ function Features(): JSX.Element {
     {
       content: "The website is so clean and good. Surprising that it was just made by one person.",
       name: "@avinashboi",
+    },
+    {
+      content: "Very cool website, also love the fact that it's open source because the people using it can contribute and make it better!",
+      name: "@totallyachicken",
     }
   ]
 
