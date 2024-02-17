@@ -8,7 +8,7 @@ const Navbar = async () => {
 
   return (
     <header className="fixed inset-x-0 top-0 z-30 w-full border-b bg-transparent backdrop-blur-md">
-      <div className="py-4 flex px-20 justify-between">
+      <div className="py-4 flex md:px-20 px-4 justify-between">
         <div>
           <Link href="/">
             <h1 className="tracking-tighter font-bold text-3xl">DevHub</h1>
