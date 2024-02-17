@@ -48,7 +48,7 @@ const Sidebar = () => {
   }
 
   let usernameElementMobile;
-  if (user?.username === null || user?.username === undefined) {
+  if (!user?.username) {
     usernameElementMobile = <Skeleton className="h-4 w-10" />;
   } else {
     usernameElementMobile = (
@@ -57,7 +57,7 @@ const Sidebar = () => {
   }
 
   let usernameElementDesktop;
-  if (user?.username === null || user?.username === undefined) {
+  if (!user?.username) {
     usernameElementDesktop = <Skeleton className="h-4 w-8" />;
   } else {
     usernameElementDesktop = (
@@ -101,7 +101,6 @@ const Sidebar = () => {
                     <div className="leading-3 select-none">
                       <p className="text-md md:text-lg">{user.name}</p>
                       {usernameElementMobile}
-                      <Skeleton className="h-4 w-[250px]" />
                     </div>
 
                     <div className="py-10 space-y-2">
